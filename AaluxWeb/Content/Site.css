@@ -1,0 +1,292 @@
+﻿/* ==== Google font ==== */
+@import url('http://fonts.googleapis.com/css?family=Lato:400,300,700,900');
+
+body {
+  background-color: #f2f2f2;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #444;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+
+a {
+  color: #d6ee18;
+  word-wrap: break-word;
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+  color: #b7cb1b;
+  text-decoration: none;
+  outline: 0;
+}
+
+a:before,
+a:after {
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #c6d550;
+}
+
+a.navbar-brand {
+	color: #fff !important;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+a.navbar-brand:hover {
+  color: #ddd !important;
+}
+
+/* Header */
+
+.nopadding {
+ padding: 0 !important;
+ margin: 0 !important;
+}
+
+#bg1 {	
+	background-color: #444;
+	background: url(Image/bg1.jpg) no-repeat center top;
+	margin-top: 50px;
+	padding-top: 20px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 650px;
+	width: 100%;
+	
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg2 {  
+  background-color: #444;
+  background: url(Image/bg2.jpg) no-repeat center top;
+  margin-top: -20px;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+  
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg3 {  
+  background-color: #444;
+  background: url(Image/bg3.jpg) no-repeat center top;
+  margin-top: -20px;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+  
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg4 {  
+  background-color: #444;
+  background: url(Image/bg4.jpg) no-repeat center top;
+  margin-top: -20px;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+  
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg5 {  
+  background-color: #444;
+  background: url(Image/bg5.jpg) no-repeat center top;
+  margin-top: -20px;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+  
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#bg1 h1 {
+	margin-bottom: 15px;
+	color: #fff;
+	font-size: 45px;
+	font-weight: 900;
+	letter-spacing: -1px;
+  text-shadow: 2px 2px black;
+}
+
+#bg2 h1{
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px black;
+  padding: 0px 0px 30px 0px;
+}
+
+#bg2 h2{
+    margin-top: 0px;
+    color: white;
+}
+
+#bg_title_2{
+  background-color: #444;
+  background: url(../img/bg_title_2.png) no-repeat center top;
+  margin-top: -20px;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+  
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2.subtitle {
+	color: #fff;
+	font-size: 20px;
+}
+
+
+/* footer */
+#footer {
+	background: #fd680e;
+	padding: 20px 0 5px;
+}
+
+p.copyright {
+	color: #fff;
+	text-align: center;
+}	
+
+#panel{
+  margin-top: 60px;
+}
+
+.dark-panel{
+  background-color: rgba(0, 0, 0, 0.5);
+  color:white;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.col-fixed {
+    /* custom width */
+    width:320px;
+}
+.col-min {
+    /* custom min width */
+    min-width:320px;
+}
+.col-max {
+    /* custom max width */
+    max-width:320px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
