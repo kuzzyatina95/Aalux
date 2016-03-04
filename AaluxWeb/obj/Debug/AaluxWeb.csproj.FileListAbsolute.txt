@@ -130,3 +130,4 @@ C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.csproj.GenerateResource.Cache
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate2.resources
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate3.resources

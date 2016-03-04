@@ -37,6 +37,26 @@ namespace AaluxWeb.Models
         public double Price { get; set; }
     }
 
+    public class NewOrder
+    {
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public Client Client { get; set; }
+        public int DirectionId { get; set; }
+        [ForeignKey("DirectionId")]
+        public Direction Direction { get; set; }
+        public int ClassCarId { get; set; }
+        [ForeignKey("ClassCarId")]
+        public ClassCar ClassCar { get; set; }
+        public int PaymentId { get; set; }
+        [ForeignKey("PaymentId")]
+        public Payment Payment { get; set; }
+        public DateTime DateBegin { get; set; }
+        public TimeSpan TimeBegin { get; set; }
+        public double Price { get; set; }
+    }
+
+
     public class Client
     {
         public int Id { get; set; }
@@ -107,9 +127,12 @@ namespace AaluxWeb.Models
     public class Direction
     {
         public int Id { get; set; }
-        public string Adress { get; set; }
-        public string Lat { get; set; }
-        public string Lot { get; set; }
+        public string AddressOrigin { get; set; }
+        public string LatOrigin { get; set; }
+        public string LngOrigin { get; set; }
+        public string AddressDestination { get; set; }
+        public string LatDestination { get; set; }
+        public string LngDestination { get; set; }
     }
 
     public class License

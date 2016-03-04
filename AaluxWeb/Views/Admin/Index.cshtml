@@ -1,0 +1,102 @@
+﻿@model IEnumerable<AaluxWeb.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2>Index</h2>
+    <div class="col-xs-12"></div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direction.AddressOrigin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassCar.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimePost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateBegin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeBegin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>*@
+            <th>
+
+            </th>
+        </tr>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(o=>order.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.Client.Name)
+                    @Html.DisplayFor(o => order.Client.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.Direction.AddressOrigin)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.ClassCar.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.Driver.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.OrderStatus.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.DatePost)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.TimePost)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.DateBegin)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.TimeBegin)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.Price)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(o => order.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(o => order.Id)
+                </td>*@
+            </tr>
+        }
+    </table>
+</div>
+
+
