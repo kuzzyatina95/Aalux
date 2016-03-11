@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace AaluxWeb.Models
 {
@@ -18,6 +21,18 @@ namespace AaluxWeb.Models
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
+    }
+    public class EditUserViewModel
+    {
+        public string Id { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
+        public bool IsEnabled { get; set; }
+
+        public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

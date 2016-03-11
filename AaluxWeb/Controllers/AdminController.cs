@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace AaluxWeb.Controllers
 {
-    [Authorize(Roles = "TechAdmin, Admin, Driver")]
+    [Authorize(Roles = "TechAdmin, Admin")]
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Admin
         public async Task<ActionResult> Index()
         {

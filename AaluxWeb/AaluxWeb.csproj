@@ -216,8 +216,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClassCarsController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonRoleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +236,10 @@
     <Compile Include="Migrations\201603041935382_migrate3.cs" />
     <Compile Include="Migrations\201603041935382_migrate3.Designer.cs">
       <DependentUpon>201603041935382_migrate3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603042257315_migrate4.cs" />
+    <Compile Include="Migrations\201603042257315_migrate4.Designer.cs">
+      <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AaluxCar.cs" />
@@ -322,6 +330,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminNavPartial.cshtml" />
+    <Content Include="Views\ClassCars\Create.cshtml" />
+    <Content Include="Views\ClassCars\Delete.cshtml" />
+    <Content Include="Views\ClassCars\Details.cshtml" />
+    <Content Include="Views\ClassCars\Edit.cshtml" />
+    <Content Include="Views\ClassCars\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\PersonRole\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603041935382_migrate3.resx">
       <DependentUpon>201603041935382_migrate3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603042257315_migrate4.resx">
+      <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

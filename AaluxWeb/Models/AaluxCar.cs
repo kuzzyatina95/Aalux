@@ -9,31 +9,58 @@ namespace AaluxWeb.Models
 {
     public class Order
     {
+        [Display(Name ="ID")]
         public int Id { get; set; }
+
+        [Display(Name = "Client")]
         public int ClientId { get; set; }
         [ForeignKey("ClientId")]
         public Client Client { get; set; }
+
+        [Display(Name = "Direction")]
         public int DirectionId { get; set; }
         [ForeignKey("DirectionId")]
         public Direction Direction { get; set; }
+
+        [Display(Name = "Car class")]
         public int ClassCarId { get; set; }
         [ForeignKey("ClassCarId")]
         public ClassCar ClassCar { get; set; }
+
+        [Display(Name = "Driver")]
         public string DriverId { get; set; }
         [ForeignKey("DriverId")]
         public Driver Driver { get; set; }
+
+        [Display(Name = "Order status")]
         public int OrderStatusId { get; set; }
         [ForeignKey("OrderStatusId")]
         public OrderStatus OrderStatus { get; set; }
+
+        [Display(Name = "Payment")]
         public int PaymentId { get; set; }
         [ForeignKey("PaymentId")]
         public Payment Payment { get; set; }
+
+        [Display(Name = "Post date")]
         public DateTime DatePost { get; set; }
+
+        [Display(Name = "Post time")]
         public TimeSpan TimePost { get; set; }
+
+        [Display(Name = "Begin date")]
         public DateTime DateBegin { get; set; }
+
+        [Display(Name = "Begin time")]
         public TimeSpan TimeBegin { get; set; }
+
+        [Display(Name = "End")]
         public DateTime DateEnd { get; set; }
+
+        [Display(Name = "End time")]
         public TimeSpan TimeEnd { get; set; }
+
+        [Display(Name = "Price")]
         public double Price { get; set; }
     }
 
@@ -60,9 +87,14 @@ namespace AaluxWeb.Models
     public class Client
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Surname { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
     }
 
@@ -157,5 +189,12 @@ namespace AaluxWeb.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+    }
+
+    public class TabsViewModel
+    {
+        public IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<Driver> Drivers { get; set; }
+        public IEnumerable<License> Licenses { get; set; }
     }
 }
