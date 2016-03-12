@@ -198,4 +198,33 @@ namespace AaluxWeb.Models
         public IEnumerable<License> Licenses { get; set; }
         public IEnumerable<ApplicationUser> Users { get; set; }
     }
+
+    public class EditDriverViewModel
+    {
+        public string Id { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        [Display(Name = "Is available ?")]
+        public bool IsAvailable { get; set; }
+
+        [Display(Name = "Birthday")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime Birthday { get; set; }
+    }
+
 }

@@ -31,6 +31,10 @@
             </div>
         </div>
     </div>
+    @if (User.IsInRole("TechAdmin") || User.IsInRole("Admin"))
+    {
+        @Html.Action("AdminNavInfo", "Admin")
+    }
     @RenderBody()
     <div class="container">
         <hr />

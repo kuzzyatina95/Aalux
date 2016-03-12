@@ -5,9 +5,9 @@
 
 @*@if (User.IsInRole("TechAdmin") || User.IsInRole("Admin"))
 {
-    @Html.Partial("_AdminNavPartial")
+    @Html.Action("AdminNavInfo", "Admin")
 }*@
-@Html.Action("AdminNavInfo", "Admin")
+
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
@@ -93,7 +93,9 @@
                 </dl>
             </div>
         </div>
-
+        <div class="col-sm-6">
+            @Html.ActionLink("Edit","EditDriver", new { id = Model.Id })
+        </div>
     </div>
 
 </div>
