@@ -196,5 +196,6 @@ namespace AaluxWeb.Models
         public IEnumerable<Order> Orders { get; set; }
         public IEnumerable<Driver> Drivers { get; set; }
         public IEnumerable<License> Licenses { get; set; }
+        public IEnumerable<ApplicationUser> Users { get; set; }
     }
 }

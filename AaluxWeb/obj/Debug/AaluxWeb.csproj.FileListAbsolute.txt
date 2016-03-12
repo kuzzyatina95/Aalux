@@ -124,7 +124,6 @@ C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.csprojResolveAssemblyReference.cache
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.dll
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.pdb
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate.resources
@@ -132,3 +131,4 @@ C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate2.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate3.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate4.resources
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.csprojResolveAssemblyReference.cache

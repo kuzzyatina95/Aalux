@@ -107,11 +107,16 @@ namespace AaluxWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,IsEnabled,Email")] EditUserViewModel editUser, params string[] selectedRole)
         {
+            if (editUser.Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Driver driver = await db.Drivers.FindAsync(editUser.Id);
             var userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var roleManager = new RoleManager<IdentityRole>(
                 new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            
+
             ApplicationUser applicationUser = await userManager.FindByIdAsync(editUser.Id);
             var userRoles = await userManager.GetRolesAsync(applicationUser.Id);
             selectedRole = selectedRole ?? new string[] { };
@@ -128,6 +133,7 @@ namespace AaluxWeb.Controllers
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
+
                 result = await userManager.RemoveFromRolesAsync(applicationUser.Id,
                     userRoles.Except(selectedRole).ToArray<string>());
                 if (!result.Succeeded)
@@ -135,11 +141,38 @@ namespace AaluxWeb.Controllers
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                //db.Entry(applicationUser).State = EntityState.Modified;
-                //await db.SaveChangesAsync();
+
+                if (selectedRole.Contains("Driver"))
+                {
+                    if (driver == null)
+                    {
+                        Driver newDriver = new Driver();
+                        newDriver.Id = editUser.Id;
+                        newDriver.IsFired = false;
+                        newDriver.Birthday = DateTime.Now;
+                        db.Drivers.Add(newDriver);
+                        await db.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        driver.IsFired = false;
+                        db.Entry(driver).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+                    }
+                }
+                else
+                {
+                    if (driver != null)
+                    {
+                        driver.IsFired = true;
+                        db.Entry(driver).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+                    }
+                }
+          
                 return RedirectToAction("Index");
             }
-            //return View(applicationUser);
+
             return View(new EditUserViewModel()
             {
                 Id = applicationUser.Id,

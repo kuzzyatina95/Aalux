@@ -26,5 +26,22 @@ namespace AaluxWeb.Controllers
                 .Include(c => c.Client);
             return View(await orders.ToListAsync());
         }
+
+
+        public ActionResult AdminNavInfo()
+        {
+            //var drivers = db.Drivers.Include(d => d.User);
+            //return PartialView("_AdminNavPartial", drivers.ToList());
+
+            var drivers = db.Drivers.Include(d => d.User);
+            TabsViewModel all = new TabsViewModel()
+            {
+                Drivers = db.Drivers.Include(u => u.User),
+                Orders = db.Orders,
+                Licenses = db.Licenses,
+                Users = db.Users.Where(u=>u.IsEnabled==false)
+            };
+            return PartialView("_AdminNavPartial", all);
+        }
     }
 }

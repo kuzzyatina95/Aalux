@@ -3,13 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+@Html.Action("AdminNavInfo", "Admin")
 <div class="container">
     <h2>Index</h2>
     <div class="row">
         <div class="col-xs-12">
-            <p>
+            @*<p>
                 @Html.ActionLink("Create New", "Create")
-            </p>
+            </p>*@
             <table class="table">
                 <tr>
                     <th>
@@ -92,8 +93,8 @@
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) @*|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                         </td>
                     </tr>
                 }

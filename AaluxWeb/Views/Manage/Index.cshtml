@@ -3,35 +3,12 @@
     ViewBag.Title = "Управление";
 }
 
-
+@*@if (User.IsInRole("TechAdmin") || User.IsInRole("Admin"))
+{
+    @Html.Partial("_AdminNavPartial")
+}*@
+@Html.Action("AdminNavInfo", "Admin")
 <div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Orders</a></li>
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        Dropdown <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-
-                <li role="presentation"><a href="#"></a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-            </ul>
-        </div>
-    </div>
     <div class="row">
         <div class="col-sm-6">
         </div>
