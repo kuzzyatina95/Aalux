@@ -246,7 +246,7 @@ p.copyright {
 }	
 
 #panel{
-  margin-top: 60px;
+  margin-top: 220px;
   margin-bottom: 20px;
 }
 
@@ -286,5 +286,9 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.pac-container {
+    z-index: 1100;
 }
 

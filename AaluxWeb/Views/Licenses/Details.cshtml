@@ -1,0 +1,54 @@
+﻿@model AaluxWeb.Models.License
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div class="col-xs-12 col-lg-12">
+        <h2>Details</h2>
+
+        <div>
+            <h4>License</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Driver.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Driver.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateBegin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateBegin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateEnd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DateEnd)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+    </div>
+</div>

@@ -220,6 +220,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LicensesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderStatusController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
@@ -243,6 +244,18 @@
     <Compile Include="Migrations\201603042257315_migrate4.Designer.cs">
       <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603141556283_migrate5.cs" />
+    <Compile Include="Migrations\201603141556283_migrate5.Designer.cs">
+      <DependentUpon>201603141556283_migrate5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603231324524_migrate6.cs" />
+    <Compile Include="Migrations\201603231324524_migrate6.Designer.cs">
+      <DependentUpon>201603231324524_migrate6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603231348113_migrate7.cs" />
+    <Compile Include="Migrations\201603231348113_migrate7.Designer.cs">
+      <DependentUpon>201603231348113_migrate7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AaluxCar.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,6 +269,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\a1.png" />
+    <Content Include="Content\Image\a2.png" />
+    <Content Include="Content\Image\a3.png" />
     <Content Include="Content\Image\bg1.jpg" />
     <Content Include="Content\Image\bg2.jpg" />
     <Content Include="Content\Image\bg3.jpg" />
@@ -364,6 +380,12 @@
     <Content Include="Views\Payments\Edit.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Manage\EditDriver.cshtml" />
+    <Content Include="Views\Licenses\Create.cshtml" />
+    <Content Include="Views\Licenses\Delete.cshtml" />
+    <Content Include="Views\Licenses\Details.cshtml" />
+    <Content Include="Views\Licenses\Edit.cshtml" />
+    <Content Include="Views\Licenses\Index.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +415,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603042257315_migrate4.resx">
       <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141556283_migrate5.resx">
+      <DependentUpon>201603141556283_migrate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603231324524_migrate6.resx">
+      <DependentUpon>201603231324524_migrate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603231348113_migrate7.resx">
+      <DependentUpon>201603231348113_migrate7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

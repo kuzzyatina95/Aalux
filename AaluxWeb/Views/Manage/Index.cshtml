@@ -93,9 +93,13 @@
                 </dl>
             </div>
         </div>
-        <div class="col-sm-6">
-            @Html.ActionLink("Edit","EditDriver", new { id = Model.Id })
-        </div>
+        @if (User.IsInRole("Driver"))
+        {
+            <div class="col-sm-6">
+                @Html.ActionLink("Edit", "EditDriver", new { id = Model.Id })
+            </div>
+        }
+       
     </div>
 
 </div>

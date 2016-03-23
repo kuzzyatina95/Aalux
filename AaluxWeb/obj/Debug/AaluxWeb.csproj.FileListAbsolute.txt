@@ -131,4 +131,6 @@ C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate2.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate3.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate4.resources
-C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.csprojResolveAssemblyReference.cache
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate5.resources
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate6.resources
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate7.resources

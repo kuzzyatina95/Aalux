@@ -46,6 +46,15 @@
                         }
                     </a>
                 </li>
+                <li>
+                    <a href="@Url.Action("Index", "Licenses")">
+                        Licenses
+                        @if (@Model.Licenses.Count() != 0)
+                        {
+                            <span class="badge" style="background-color:red;">@Model.Licenses.Count()</span>
+                        }
+                    </a>
+                </li>
                 @if (User.IsInRole("TechAdmin"))
                 {
                     <li><a href="@Url.Action("Index", "Payments")">Payments</a></li>

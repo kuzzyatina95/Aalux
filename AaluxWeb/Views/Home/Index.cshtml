@@ -11,44 +11,191 @@
             <div class="col-xs-4 col-sm-4">
                 <img src="~/Content/Image/wifi.png" class="img-responsive" alt="Responsive image">
             </div>
-            <div class="col-xs-4 col-sm-4">
-                <h3>+44(0)189 544 8503</h3>
-                <h3>+44(0)785 096 6168</h3>
-                <h3>Minsk +375(29)625 8309</h3>
+            @*<div class="col-xs-4 col-sm-4">
+                    <h3>+44(0)189 544 8503</h3>
+                    <h3>+44(0)785 096 6168</h3>
+                    <h3>Minsk +375(29)625 8309</h3>
+                </div>*@
+        </div>
+        <div class="row">
+            @*<div class="col-sm-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Check me out
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>*@
+
+            <div class="col-sm-6">
+                <h1>CORPORATE CHAUFFEUR SERVICES</h1>
+                <h2 class="subtitle">Get order</h2>
+            </div>
+            <div class="col-sm-6">
+
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="col-sm-6">
-                <h1>CORPORATE CHAUFFEUR SERVICES</h1>
-                <h2 class="subtitle">Здесь вы закажите</h2>
-            </div>
-            <div class="col-sm-6">
-               
+
             </div>
         </div>
+    </div>
+    <div class="container" ng-app="myApp" ng-controller="orderCtrl">
+        <div class="row">
+
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Launch demo modal
+        </button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="myForm">
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" />
+                                        <label>
+                                            <input type="radio" ng-model="order.ClassCar" ng-value="ClassCar[0]">
+                                            {{ClassCar[0].Name}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <img src="~/Content/Image/a2.png" alt="" class="img-responsive" />
+                                        <label>
+                                            <input type="radio" ng-model="order.ClassCar" ng-value="ClassCar[1]">
+                                            {{ClassCar[1].Name}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
+                                        <label>
+                                            <input type="radio" ng-model="order.ClassCar" ng-value="ClassCar[2]">
+                                            {{ClassCar[2].Name}}
+                                        </label>
+                                        <label>
+                                            <input type="radio" ng-model="order.ClassCar" ng-value="ClassCar[3]">
+                                            {{ClassCar[3].Name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <tt>ClassCar = {{order.ClassCar | json}}</tt><br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label" for="placeOrigin">Origin</label>
+                                    <input places-auto-complete size=80
+                                           ng-model="vm.origin"
+                                           on-place-changed="vm.placeChangedOrigin()"
+                                           class="form-control"
+                                           id="placeOrigin" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label" for="placeDestination">Destination</label>
+                                    <input places-auto-complete size=80
+                                           ng-model="vm.destination"
+                                           on-place-changed="vm.placeChangedDestination()"
+                                           class="form-control"
+                                           id="placeDestination" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ng-map zoom="14" center="Minsk">
+                                        <directions draggable="false"
+                                                    travel-mode="DRIVING"
+                                                    origin="{{vm.placeOrigin.formatted_address}}"
+                                                    destination="{{vm.placeDestination.formatted_address}}">
+                                        </directions>
+                                    </ng-map>
+                                    <p>{{map.directionsRenderers[0].directions.routes[0].legs[0].distance.text}}</p>
+                                    <p>{{((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10 | number:1}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <label class="control-label" for="Name">Name</label>
+                                    <input type="text" class="form-control" value="" id="Name" ng-model="order.Client.Name" placeholder="Name" />
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="control-label" for="Surname">Surname</label>
+                                    <input type="text" class="form-control" value="" id="Surname" ng-model="order.Client.Surname" placeholder="Surname" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label" for="Email">Email</label>
+                                    <input type="email" class="form-control" value="" id="Email" ng-model="order.Client.Email" placeholder="Email" />
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="control-label" for="Phone">Phone</label>
+                                    <input type="tel" class="form-control" value="" id="Phone" ng-model="order.Client.Phone" placeholder="Phone" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" />
+                                        <label>
+                                            <input type="radio" ng-model="order.PaymentId" ng-value="1">
+                                            Credit card
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" />
+                                        <label>
+                                            <input type="radio" ng-model="order.PaymentId" ng-value="2">
+                                            Cash
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <tt>Order = {{order | json}}</tt><br />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" ng-click="reRednerMap()">ok</button>
+                        <button type="button" class="btn btn-primary" ng-click="CreatePost()">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
     <!--/.nav-footer dark -->
     <div class="dark-panel" id="panel">
@@ -65,7 +212,6 @@
     <!--/.nav-footer dark -->
 </div>
 <!--/.END BG1 -->
-
 <!--/.START BG2 -->
 <div id="bg2">
     <div class="container">
@@ -74,16 +220,16 @@
                 <h1 class="text-center">TOUR SERVICES</h1>
             </div>
         </div>
-        <div class="text-center">
-            <div class="media">
-                <div class="pull-left">
-                    <img class="media-object" src="~/Content/Image/ic.png" alt="...">
+        @*<div class="text-center">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="media-object" src="~/Content/Image/ic.png" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <h2>transfers from any London airport !!!</h2>
+                    </div>
                 </div>
-                <div class="media-body">
-                    <h2>transfers from any London airport !!!</h2>
-                </div>
-            </div>
-        </div>
+            </div>*@
         <div class="row row-centered">
             <div class="col-sm-9 col-centered">
                 <div class="media">
@@ -147,8 +293,7 @@
     </div>
 </div>
 <!--/.END BG2 -->
-
-	<!--/.START BG3 -->
+<!--/.START BG3 -->
 <div id="bg3">
     <div class="container">
         <div class="row">
@@ -157,7 +302,7 @@
     </div>
 </div>
 <!--/.END BG3 -->
-	<!--/.START BG4 -->
+<!--/.START BG4 -->
 <div id="bg4">
     <div class="container">
         <div class="row">
@@ -166,7 +311,7 @@
     </div>
 </div>
 <!--/.END BG4 -->
-	<!--/.START BG5 -->
+<!--/.START BG5 -->
 <div id="bg5">
     <div class="container">
         <div class="row">
@@ -175,9 +320,8 @@
     </div>
 </div>
 <!--/.END BG5 -->
-
 @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ4W_bER4FDaLnFho84dq8ab2gn4KeuQI&libraries=places&callback=initMap"
-        async defer></script>*@
+    async defer></script>*@
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDQ4W_bER4FDaLnFho84dq8ab2gn4KeuQI&libraries=placeses,visualization,drawing,geometry,places"></script>
 
 <script src="~/Scripts/googlemaps.js"></script>

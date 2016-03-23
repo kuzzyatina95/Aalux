@@ -43,46 +43,32 @@ namespace AaluxWeb.Models
         public Payment Payment { get; set; }
 
         [Display(Name = "Post date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DatePost { get; set; }
 
         [Display(Name = "Post time")]
         public TimeSpan TimePost { get; set; }
 
         [Display(Name = "Begin date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateBegin { get; set; }
 
         [Display(Name = "Begin time")]
         public TimeSpan TimeBegin { get; set; }
 
         [Display(Name = "End")]
-        public DateTime DateEnd { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DateEnd { get; set; }
 
         [Display(Name = "End time")]
-        public TimeSpan TimeEnd { get; set; }
+        public TimeSpan? TimeEnd { get; set; }
 
         [Display(Name = "Price")]
         public double Price { get; set; }
     }
-
-    public class NewOrder
-    {
-        public int ClientId { get; set; }
-        [ForeignKey("ClientId")]
-        public Client Client { get; set; }
-        public int DirectionId { get; set; }
-        [ForeignKey("DirectionId")]
-        public Direction Direction { get; set; }
-        public int ClassCarId { get; set; }
-        [ForeignKey("ClassCarId")]
-        public ClassCar ClassCar { get; set; }
-        public int PaymentId { get; set; }
-        [ForeignKey("PaymentId")]
-        public Payment Payment { get; set; }
-        public DateTime DateBegin { get; set; }
-        public TimeSpan TimeBegin { get; set; }
-        public double Price { get; set; }
-    }
-
 
     public class Client
     {
@@ -103,15 +89,39 @@ namespace AaluxWeb.Models
         public string Id { get; set; }
         [ForeignKey("Id")]
         public ApplicationUser User { get; set; }
+
+        [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [Display(Name = "Surname")]
         public string Surname { get; set; }
+
+        [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Phone")]
         public string Phone { get; set; }
+
+        [Display(Name = "Is available ?")]
         public bool IsAvailable { get; set; }
+
+        [Display(Name = "Is busy ?")]
         public bool IsBusy { get; set; }
+
+        [Display(Name = "Is fired ?")]
         public bool IsFired { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Birthday { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return Name + " " + Surname + " " + User.Email;
+            }
+        }
 
         public ICollection<Car> Cars { get; set; }
         public ICollection<Order> Orders { get; set; }
@@ -126,20 +136,42 @@ namespace AaluxWeb.Models
     public class Car
     {
         public int Id { get; set; }
+
+        [Display(Name = "Class car")]
         public int ClassCarId { get; set; }
         [ForeignKey("ClassCarId")]
         public ClassCar ClassCar { get; set; }
+
         public string UserID { get; set; }
         [ForeignKey("UserID")]
         public Driver Driver { get; set; }
+
+        [Display(Name = "Manufacturer")]
         public string Manufacturer { get; set; }
+
+        [Display(Name = "Model")]
         public string Model { get; set; }
+
+
+        [Display(Name = "Body type")]
         public string BodyType { get; set; }
+
+        [Display(Name = "Color")]
         public string Color { get; set; }
+
+        [Display(Name = "Year of release")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime YearOfRelease { get; set; }
+
+        [Display(Name = "Capacity")]
         public int Capacity { get; set; }
+
+        [Display(Name = "Short character")]
         public string ShortCharacter { get; set; }
+
         public string ImageLink { get; set; }
+
         public double Price { get; set; }
     }
 
@@ -148,12 +180,6 @@ namespace AaluxWeb.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
-
-        public ICollection<Car> Cars { get; set; }
-        public ClassCar()
-        {
-            Cars = new List<Car>();
-        }
     }
 
     public class Direction
@@ -170,11 +196,23 @@ namespace AaluxWeb.Models
     public class License
     {
         public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Name")]
         public string Name { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "Driver")]
         public string UserID { get; set; }
         [ForeignKey("UserID")]
         public Driver Driver { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateBegin { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateEnd { get; set; }
 
     }
@@ -227,4 +265,46 @@ namespace AaluxWeb.Models
         public DateTime Birthday { get; set; }
     }
 
+    public class NewOrder
+    {
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public Client Client { get; set; }
+        public int DirectionId { get; set; }
+        [ForeignKey("DirectionId")]
+        public Direction Direction { get; set; }
+        public int ClassCarId { get; set; }
+        [ForeignKey("ClassCarId")]
+        public ClassCar ClassCar { get; set; }
+        public int PaymentId { get; set; }
+        [ForeignKey("PaymentId")]
+        public Payment Payment { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DateBegin { get; set; }
+        public TimeSpan TimeBegin { get; set; }
+        public double Price { get; set; }
+
+    }
+
+    public class NewOrderViewModel
+    {
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public Client Client { get; set; }
+        public int DirectionId { get; set; }
+        [ForeignKey("DirectionId")]
+        public Direction Direction { get; set; }
+        public int ClassCarId { get; set; }
+        [ForeignKey("ClassCarId")]
+        public ClassCar ClassCar { get; set; }
+        public int PaymentId { get; set; }
+        [ForeignKey("PaymentId")]
+        public Payment Payment { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DateBegin { get; set; }
+        public TimeSpan TimeBegin { get; set; }
+        public double Price { get; set; }
+    }
 }
