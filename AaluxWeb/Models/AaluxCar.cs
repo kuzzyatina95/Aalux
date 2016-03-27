@@ -48,7 +48,9 @@ namespace AaluxWeb.Models
         public DateTime DatePost { get; set; }
 
         [Display(Name = "Post time")]
-        public TimeSpan TimePost { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime TimePost { get; set; }
 
         [Display(Name = "Begin date")]
         [DataType(DataType.Date)]
@@ -56,7 +58,9 @@ namespace AaluxWeb.Models
         public DateTime DateBegin { get; set; }
 
         [Display(Name = "Begin time")]
-        public TimeSpan TimeBegin { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime TimeBegin { get; set; }
 
         [Display(Name = "End")]
         [DataType(DataType.Date)]
@@ -64,7 +68,9 @@ namespace AaluxWeb.Models
         public DateTime? DateEnd { get; set; }
 
         [Display(Name = "End time")]
-        public TimeSpan? TimeEnd { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime? TimeEnd { get; set; }
 
         [Display(Name = "Price")]
         public double Price { get; set; }
@@ -78,6 +84,7 @@ namespace AaluxWeb.Models
         [Required]
         public string Surname { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required(ErrorMessage = "Your must provide a PhoneNumber")]
         [DataType(DataType.PhoneNumber)]
@@ -287,24 +294,43 @@ namespace AaluxWeb.Models
 
     }
 
+    public class DirectionViewModel
+    {
+        public int Id { get; set; }
+        [Required]
+        public string AddressOrigin { get; set; }
+        public string LatOrigin { get; set; }
+        public string LngOrigin { get; set; }
+        [Required]
+        public string AddressDestination { get; set; }
+        public string LatDestination { get; set; }
+        public string LngDestination { get; set; }
+    }
+
     public class NewOrderViewModel
     {
         public int ClientId { get; set; }
+        [Required]
         [ForeignKey("ClientId")]
         public Client Client { get; set; }
         public int DirectionId { get; set; }
+        [Required]
         [ForeignKey("DirectionId")]
-        public Direction Direction { get; set; }
+        public DirectionViewModel Direction { get; set; }
+        [Required]
         public int ClassCarId { get; set; }
-        [ForeignKey("ClassCarId")]
-        public ClassCar ClassCar { get; set; }
+
+        [Required]
         public int PaymentId { get; set; }
-        [ForeignKey("PaymentId")]
-        public Payment Payment { get; set; }
+
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateBegin { get; set; }
-        public TimeSpan TimeBegin { get; set; }
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime TimeBegin { get; set; }
         public double Price { get; set; }
     }
 }

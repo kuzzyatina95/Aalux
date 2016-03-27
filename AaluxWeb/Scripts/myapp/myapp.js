@@ -1,13 +1,9 @@
 ﻿var myApp = angular.module('myApp', ['ngMap']);
 
-
-
 myApp.controller('orderCtrl', function (NgMap, $scope, $http) {
 
     $scope.vm = {};
-
     $scope.ClassCar = {};
-
     $scope.order = {
         Client: {
             Name: {},
@@ -29,7 +25,6 @@ myApp.controller('orderCtrl', function (NgMap, $scope, $http) {
         TimeBegin: {}
     };
 
-
     $scope.reRednerMap = function () {
         google.maps.event.trigger(this.map, 'resize');
     };
@@ -37,10 +32,9 @@ myApp.controller('orderCtrl', function (NgMap, $scope, $http) {
     $('#myModal').on('shown.bs.modal', function () {
         $scope.reRednerMap();
     });
-
-
-
-
+    $('#payForm').validate({
+        ignore: "#payForm *"
+    });
 
     $http.get('/Home/IndexCreateOrder').success(function (data) {
         $scope.ClassCar = data;
@@ -57,20 +51,22 @@ myApp.controller('orderCtrl', function (NgMap, $scope, $http) {
         $scope.selected = $scope.ClassCar[0];
     });
 
-    $scope.CreatePost = function () {
-        $scope.order.Direction.AddressOrigin = $scope.vm.origin;
-        $scope.order.Direction.AddressDestination = $scope.vm.destination;
-        //var nana = $scope.vm.origin;
-        //$scope.order.Direction.AddressOrigin = nana;
-        $scope.order.Direction.LatOrigin = $scope.vm.placeOrigin.geometry.location.lat();
-        $scope.order.Direction.LngOrigin = $scope.vm.placeOrigin.geometry.location.lng();
-        $scope.order.Direction.LatDestination = $scope.vm.placeDestination.geometry.location.lat();
-        $scope.order.Direction.LngDestination = $scope.vm.placeDestination.geometry.location.lng();
-        $http.post('/Home/IndexCreateOrder', $scope.order).success(function (data) {
+    $scope.SetClassCar = function (classcar) {
+        $scope.order.ClassCar = classcar;
+    }
+
+    //$scope.CreatePost = function () {
+    //    $scope.order.Direction.AddressOrigin = $scope.vm.origin;
+    //    $scope.order.Direction.AddressDestination = $scope.vm.destination;
+    //    $scope.order.Direction.LatOrigin = $scope.vm.placeOrigin.geometry.location.lat();
+    //    $scope.order.Direction.LngOrigin = $scope.vm.placeOrigin.geometry.location.lng();
+    //    $scope.order.Direction.LatDestination = $scope.vm.placeDestination.geometry.location.lat();
+    //    $scope.order.Direction.LngDestination = $scope.vm.placeDestination.geometry.location.lng();
+    //    $http.post('/Home/IndexCreateOrder', $scope.order).success(function (data) {
             
-        });
-        $scope.order = {};
-    };
+    //    });
+    //    $scope.order = {};
+    //};
 
     $scope.vm.placeChangedOrigin = function () {
         $scope.vm.placeOrigin = this.getPlace();
