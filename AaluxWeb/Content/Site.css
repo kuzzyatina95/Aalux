@@ -13,12 +13,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/*h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  color: #444;
-}*/
-
 h1 {
 	font-size: 40px;
 }
@@ -31,8 +25,6 @@ h4 {
 	font-weight: 400;
 	font-size: 20px;
 }
-
-
 
 
 a {
@@ -281,12 +273,6 @@ p.copyright {
     max-width:320px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 .pac-container {
     z-index: 1100;

@@ -53,22 +53,22 @@
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="~/Content/Image/a2.png" alt="" class="img-responsive" for="ClassCarId" />
+                                    <div class="col-xs-6 col-sm-3">
+                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" for="ClassCarId" />
                                         @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[1].Id", ng_click = "SetClassCar(ClassCar[1])" })
                                         <label>{{ClassCar[1].Name}}</label>
                                     </div>
-                                    <div class="col-xs-3">
-                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" />
+                                    <div class="col-xs-6 col-sm-3">
+                                        <img src="~/Content/Image/a2.png" alt="" class="img-responsive" />
                                         @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[0].Id", ng_click = "SetClassCar(ClassCar[0])" })
                                         <label>{{ClassCar[0].Name}}</label>
                                     </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-6 col-sm-3">
                                         <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
                                         @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[2].Id", ng_click = "SetClassCar(ClassCar[2])" })
                                         <label>{{ClassCar[2].Name}}</label>
                                     </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-6 col-sm-3">
                                         <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
                                         @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[3].Id", ng_click = "SetClassCar(ClassCar[3])" })
                                         <label>{{ClassCar[3].Name}}</label>
@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-12 col-sm-6">
                                         @Html.LabelFor(model => model.Direction.AddressOrigin)
                                         @Html.TextBoxFor(model => model.Direction.AddressOrigin, new
                                {
@@ -89,7 +89,7 @@
                                })
                                         @Html.ValidationMessageFor(model => model.Direction.AddressOrigin, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-12 col-sm-6">
                                         @Html.LabelFor(model => model.Direction.AddressDestination)
                                         @Html.TextBoxFor(model => model.Direction.AddressDestination, new
                                {
@@ -121,11 +121,16 @@
                                     @Html.HiddenFor(model => model.Direction.LngOrigin, new { ng_value = "vm.placeOrigin.geometry.location.lng()" })
                                     @Html.HiddenFor(model => model.Direction.LatDestination, new { ng_value = "vm.placeDestination.geometry.location.lng()" })
                                     @Html.HiddenFor(model => model.Direction.LngDestination, new { ng_value = "vm.placeDestination.geometry.location.lng()" })
+                                    @Html.HiddenFor(model => model.Price, new { ng_value = "(((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10)  * order.ClassCar.Price | number:1" })
                                     <div class="col-xs-6">
                                         <h3>Distance: {{((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10 | number:1}} miles</h3>
                                     </div>
                                     <div class="col-xs-6">
-                                        <h3>Cost: {{(((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10)  * order.ClassCar.Price | number:1}} pounds</h3>
+                                        <h3>
+                                            Cost:
+                                            <span class="glyphicon glyphicon-gbp"></span>
+                                            {{(((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10)  * order.ClassCar.Price | number:1}}
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -179,12 +184,14 @@
                                 </div>
                             }
                             <div class="row">
-                                <form id="payForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top: -60px; margin-left: 10px">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="NEVVCWEY7TQDJ">
-                                    <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-                                </form>
+                                <div class="col-xs-6">
+                                    <form id="payForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top: -50px;">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="NEVVCWEY7TQDJ">
+                                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."  class="img-responsive">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </div>
                             </div>
                             @*<tt>Order = {{order | json}}</tt><br />*@
 

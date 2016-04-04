@@ -244,6 +244,15 @@ namespace AaluxWeb.Models
         public IEnumerable<ApplicationUser> Users { get; set; }
     }
 
+    public class TabOrdersViewModel
+    {
+        public IEnumerable<Order> OrdersNew { get; set; }
+        public IEnumerable<Order> OrdersInProgress { get; set; }
+        public IEnumerable<Order> OrdersFinished { get; set; }
+        public IEnumerable<Order> OrdersCanceled { get; set; }
+    }
+
+
     public class EditDriverViewModel
     {
         public string Id { get; set; }
@@ -272,36 +281,16 @@ namespace AaluxWeb.Models
         public DateTime Birthday { get; set; }
     }
 
-    public class NewOrder
-    {
-        public int ClientId { get; set; }
-        [ForeignKey("ClientId")]
-        public Client Client { get; set; }
-        public int DirectionId { get; set; }
-        [ForeignKey("DirectionId")]
-        public Direction Direction { get; set; }
-        public int ClassCarId { get; set; }
-        [ForeignKey("ClassCarId")]
-        public ClassCar ClassCar { get; set; }
-        public int PaymentId { get; set; }
-        [ForeignKey("PaymentId")]
-        public Payment Payment { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateBegin { get; set; }
-        public TimeSpan TimeBegin { get; set; }
-        public double Price { get; set; }
-
-    }
-
     public class DirectionViewModel
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name = "From")]
         public string AddressOrigin { get; set; }
         public string LatOrigin { get; set; }
         public string LngOrigin { get; set; }
         [Required]
+        [Display(Name = "To")]
         public string AddressDestination { get; set; }
         public string LatDestination { get; set; }
         public string LngDestination { get; set; }
@@ -326,11 +315,13 @@ namespace AaluxWeb.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date")]
         public DateTime DateBegin { get; set; }
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Time")]
         public DateTime TimeBegin { get; set; }
-        public double Price { get; set; }
+        public string Price { get; set; }
     }
 }

@@ -30,14 +30,11 @@ namespace AaluxWeb.Controllers
 
         public ActionResult AdminNavInfo()
         {
-            //var drivers = db.Drivers.Include(d => d.User);
-            //return PartialView("_AdminNavPartial", drivers.ToList());
-
             var drivers = db.Drivers.Include(d => d.User);
             TabsViewModel all = new TabsViewModel()
             {
                 Drivers = db.Drivers.Include(u => u.User),
-                Orders = db.Orders,
+                Orders = db.Orders.Where(o=>o.OrderStatusId==1),
                 Licenses = db.Licenses,
                 Users = db.Users.Where(u=>u.IsEnabled==false)
             };

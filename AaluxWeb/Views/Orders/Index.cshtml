@@ -1,0 +1,425 @@
+﻿@model AaluxWeb.Models.TabOrdersViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>Orders Index</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="content">
+                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    <li class="active"><a href="#ordersNew" data-toggle="tab">New</a></li>
+                    <li><a href="#ordersInProgress" data-toggle="tab">In progress</a></li>
+                    <li><a href="#ordersFinished" data-toggle="tab">Finished</a></li>
+                    <li><a href="#ordersCanceled" data-toggle="tab">Canceled</a></li>
+                </ul>
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane active" id="ordersNew">
+                        <h1>New orders</h1>
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Client
+                                </th>
+                                <th>
+                                    From
+                                </th>
+                                <th>
+                                    To
+                                </th>
+                                <th>
+                                    Class car
+                                </th>
+                                <th>
+                                    Order status
+                                </th>
+                                <th>
+                                    Date post
+                                </th>
+                                <th>
+                                    Time post
+                                </th>
+                                <th>
+                                    Date begin
+                                </th>
+                                <th>
+                                    Time begin
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                            @foreach (var orderNew in Model.OrdersNew)
+            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Client.Name)
+                                        @Html.DisplayFor(o => orderNew.Client.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressOrigin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.ClassCar.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.OrderStatus.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DatePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DateBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimeBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Payment.Name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = orderNew.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+
+                    <div class="tab-pane" id="ordersInProgress">
+                        <h1>In progress</h1>
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Client
+                                </th>
+                                <th>
+                                    From
+                                </th>
+                                <th>
+                                    To
+                                </th>
+                                <th>
+                                    Class car
+                                </th>
+                                <th>
+                                    Driver
+                                </th>
+                                <th>
+                                    Order status
+                                </th>
+                                <th>
+                                    Date post
+                                </th>
+                                <th>
+                                    Time post
+                                </th>
+                                <th>
+                                    Date begin
+                                </th>
+                                <th>
+                                    Time begin
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                            @foreach (var orderNew in Model.OrdersInProgress)
+            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Client.Name)
+                                        @Html.DisplayFor(o => orderNew.Client.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressOrigin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.ClassCar.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Driver.Name)
+                                        @Html.DisplayFor(o => orderNew.Driver.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.OrderStatus.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DatePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DateBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimeBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Payment.Name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = orderNew.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        
+                    </div>
+
+
+                    <div class="tab-pane" id="ordersFinished">
+                        <h1>Finished</h1>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Client
+                                </th>
+                                <th>
+                                    From
+                                </th>
+                                <th>
+                                    To
+                                </th>
+                                <th>
+                                    Class car
+                                </th>
+                                <th>
+                                    Driver
+                                </th>
+                                <th>
+                                    Order status
+                                </th>
+                                <th>
+                                    Date post
+                                </th>
+                                <th>
+                                    Time post
+                                </th>
+                                <th>
+                                    Date begin
+                                </th>
+                                <th>
+                                    Time begin
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                            @foreach (var orderNew in Model.OrdersFinished)
+            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Client.Name)
+                                        @Html.DisplayFor(o => orderNew.Client.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressOrigin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.ClassCar.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Driver.Name)
+                                        @Html.DisplayFor(o => orderNew.Driver.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.OrderStatus.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DatePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DateBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimeBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Payment.Name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = orderNew.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+                    <div class="tab-pane" id="ordersCanceled">
+                        <h1>Canceled</h1>
+                        
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Client
+                                </th>
+                                <th>
+                                    From
+                                </th>
+                                <th>
+                                    To
+                                </th>
+                                <th>
+                                    Class car
+                                </th>
+                                <th>
+                                    Driver
+                                </th>
+                                <th>
+                                    Order status
+                                </th>
+                                <th>
+                                    Date post
+                                </th>
+                                <th>
+                                    Time post
+                                </th>
+                                <th>
+                                    Date begin
+                                </th>
+                                <th>
+                                    Time begin
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                            @foreach (var orderNew in Model.OrdersCanceled)
+            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Client.Name)
+                                        @Html.DisplayFor(o => orderNew.Client.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressOrigin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Direction.AddressDestination)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.ClassCar.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Driver.Name)
+                                        @Html.DisplayFor(o => orderNew.Driver.Surname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.OrderStatus.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DatePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimePost)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.DateBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.TimeBegin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(o => orderNew.Payment.Name)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = orderNew.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
