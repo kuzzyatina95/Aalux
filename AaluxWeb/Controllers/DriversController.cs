@@ -32,6 +32,10 @@ namespace AaluxWeb.Controllers
             }
             //Driver driver = await db.Drivers.FindAsync(id);
             Driver driver = await db.Drivers.Include(u => u.User).FirstOrDefaultAsync(d => d.Id == id);
+            Car car = await db.Cars.Include(c=>c.ClassCar).FirstOrDefaultAsync(d => d.UserID == id);
+            ViewBag.Manufacturer = car.Manufacturer;
+            ViewBag.Model = car.Model;
+            ViewBag.ClassCarName = car.ClassCar.Name;
             if (driver == null)
             {
                 return HttpNotFound();

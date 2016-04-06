@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+<div class="container-fluid">
+    <div class="row">
+        <h2>Orders</h2>
+        <div id="content">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active">
+                    <a href="#ordersCurrent" data-toggle="tab">
+                        New @if (@Model.OrdersNew.Count() != 0)
+                        {
+                            <span class="badge" style="background-color:red;">@Model.OrdersNew.Count()</span>
+                        }
+                    </a>
+                </li>
+                <li><a href="#ordersInProgress" data-toggle="tab">In progress</a></li>
+                <li><a href="#ordersFinished" data-toggle="tab">Finished</a></li>
+                <li><a href="#ordersCanceled" data-toggle="tab">Canceled</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

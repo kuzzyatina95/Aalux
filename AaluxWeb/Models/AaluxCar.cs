@@ -130,13 +130,15 @@ namespace AaluxWeb.Models
             }
         }
 
-        public ICollection<Car> Cars { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public Driver()
-        {
-            Cars = new List<Car>();
-            Orders = new List<Order>();
-        }
+       
+
+        //public ICollection<Car> Cars { get; set; }
+        //public ICollection<Order> Orders { get; set; }
+        //public Driver()
+        //{
+        //    Cars = new List<Car>();
+        //    Orders = new List<Order>();
+        //}
 
     }
 
@@ -180,6 +182,14 @@ namespace AaluxWeb.Models
         public string ImageLink { get; set; }
 
         public double Price { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return Driver.Name + " " + Driver.Surname + " " + Driver.Email;
+            }
+        }
     }
 
     public class ClassCar
@@ -248,6 +258,15 @@ namespace AaluxWeb.Models
         public IEnumerable<ApplicationUser> Users { get; set; }
     }
 
+    public class NavDriverViewModel
+    {
+        public string DriverId { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
+        public Driver Driver { get; set; }
+        public int CarId { get; set; }
+        public Car Car { get; set; }
+    }
+
     public class TabOrdersViewModel
     {
         public IEnumerable<Order> OrdersNew { get; set; }
@@ -278,6 +297,8 @@ namespace AaluxWeb.Models
 
         [Display(Name = "Driver")]
         public string DriverId { get; set; }
+
+        public Driver Driver { get; set; }
 
         [Display(Name = "Order status")]
         public int OrderStatusId { get; set; }
@@ -391,5 +412,45 @@ namespace AaluxWeb.Models
         [Display(Name = "Time")]
         public DateTime TimeBegin { get; set; }
         public string Price { get; set; }
+    }
+
+    public class CarViewModel
+    {
+        public int Id { get; set; }
+
+        [Display(Name = "Class car")]
+        public int ClassCarId { get; set; }
+        [ForeignKey("ClassCarId")]
+        public ClassCar ClassCar { get; set; }
+
+        public string UserID { get; set; }
+        [ForeignKey("UserID")]
+        public Driver Driver { get; set; }
+
+        [Display(Name = "Manufacturer")]
+        public string Manufacturer { get; set; }
+
+        [Display(Name = "Model")]
+        public string Model { get; set; }
+
+
+        [Display(Name = "Body type")]
+        public string BodyType { get; set; }
+
+        [Display(Name = "Color")]
+        public string Color { get; set; }
+
+        [Display(Name = "Year of release")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime YearOfRelease { get; set; }
+
+        [Display(Name = "Capacity")]
+        public int Capacity { get; set; }
+
+        [Display(Name = "Short character")]
+        public string ShortCharacter { get; set; }
+
+        public string ImageLink { get; set; }
     }
 }

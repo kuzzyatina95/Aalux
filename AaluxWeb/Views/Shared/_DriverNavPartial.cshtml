@@ -1,36 +1,35 @@
-﻿@model AaluxWeb.Models.TabsViewModel
-
+﻿@model AaluxWeb.Models.NavDriverViewModel
 <div class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin-panel" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#driver-panel" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             @*@Html.ActionLink("Admin panel", "Index", "Manage", htmlAttributes: new { @class = "navbar-brand", @style= "color:#000 !important;" })*@
-            <a class="navbar-brand" href="/Manage" style="color:#000 !important;">Admin panel</a>
+            <a class="navbar-brand" href="/DriverProfile" style="color:#000 !important;">Driver panel</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="admin-panel">
+        <div class="collapse navbar-collapse" id="driver-panel">
             <ul class="nav navbar-nav">
-                @*<li>@Html.ActionLink("Main", "Index", "Admin")</li>*@
-                <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
-                <li>
+                <li>@Html.ActionLink("Edit my profile", "EditDriver", new { id = Model.DriverId })</li>
+                <li>@Html.ActionLink("My car", "Car", new { id = Model.CarId })</li>
+                @*<li>
                     <a href="@Url.Action("Index", "Users")">
                         Users
                         @if (@Model.Users.Count() != 0)
                         {
-                            <span class="badge"style="background-color:red;">@Model.Users.Count()</span>
+                            <span class="badge" style="background-color:red;">@Model.Users.Count()</span>
                         }
                     </a>
-                </li>
-                <li>@Html.ActionLink("Class cars", "Index", "ClassCars")</li>
+                </li>*@
+                @*<li>@Html.ActionLink("Class cars", "Index", "ClassCars")</li>*@
                 <li>
-                    <a href="@Url.Action("Index", "Orders")">
+                    <a href="@Url.Action("Orders")">
                         Orders
                         @if (@Model.Orders.Count() != 0)
                         {
@@ -38,7 +37,7 @@
                         }
                     </a>
                 </li>
-                <li>
+                @*<li>
                     <a href="@Url.Action("Index", "Drivers")">
                         Drivers
                         @if (@Model.Drivers.Count() != 0)
@@ -46,8 +45,8 @@
                             <span class="badge" style="background-color:red;">@Model.Drivers.Count()</span>
                         }
                     </a>
-                </li>
-                <li>
+                </li>*@
+                @*<li>
                     <a href="@Url.Action("Index", "Licenses")">
                         Licenses
                         @if (@Model.Licenses.Count() != 0)
@@ -55,12 +54,12 @@
                             <span class="badge" style="background-color:red;">@Model.Licenses.Count()</span>
                         }
                     </a>
-                </li>
-                @if (User.IsInRole("TechAdmin"))
+                </li>*@
+                @*@if (User.IsInRole("TechAdmin"))
                 {
                     <li><a href="@Url.Action("Index", "Payments")">Payments</a></li>
                     <li><a href="@Url.Action("Index", "OrderStatus")">Order Status</a></li>
-                }
+                }*@
 
             </ul>
         </div><!-- /.navbar-collapse -->

@@ -14,14 +14,14 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#aaluxnav">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Aalux", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" id="aaluxnav">
                 @*<ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
@@ -34,6 +34,10 @@
     @if (User.IsInRole("TechAdmin") || User.IsInRole("Admin"))
     {
         @Html.Action("AdminNavInfo", "Admin")
+    }
+    @if (User.IsInRole("Driver"))
+    {
+        @Html.Action("DriverNavInfo", "DriverProfile")
     }
     @RenderBody()
     <div class="container">

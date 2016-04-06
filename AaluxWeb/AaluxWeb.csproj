@@ -222,6 +222,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClassCarsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\DriverProfileController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LicensesController.cs" />
@@ -396,7 +397,7 @@
     <Content Include="Views\Payments\Details.cshtml" />
     <Content Include="Views\Payments\Edit.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
-    <Content Include="Views\Manage\EditDriver.cshtml" />
+    <Content Include="Views\DriverProfile\EditDriver.cshtml" />
     <Content Include="Views\Licenses\Create.cshtml" />
     <Content Include="Views\Licenses\Delete.cshtml" />
     <Content Include="Views\Licenses\Details.cshtml" />
@@ -405,6 +406,10 @@
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Shared\_DriverNavPartial.cshtml" />
+    <Content Include="Views\DriverProfile\Index.cshtml" />
+    <Content Include="Views\DriverProfile\Orders.cshtml" />
+    <Content Include="Views\DriverProfile\Car.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

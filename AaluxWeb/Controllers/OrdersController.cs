@@ -93,9 +93,16 @@ namespace AaluxWeb.Controllers
                 Price = order.Price,
                 TimeBegin = order.TimeBegin,
                 TimeEnd = order.TimeEnd,
-                TimePost = order.TimePost
+                TimePost = order.TimePost,
+                Driver = order.Driver
             };
-            ViewBag.DriverId = new SelectList(db.Drivers.Include(u => u.User).Where(d=>d.IsAvailable==true).Where(d=>d.IsBusy==false), "Id", "FullName", order.DriverId);
+            ViewBag.DriverId = new SelectList(
+                db.Cars
+                .Include(u => u.Driver)
+                .Where(d => d.Driver.IsAvailable == true)
+                .Where(d => d.Driver.IsBusy == false)
+                .Where(c=>c.ClassCarId==order.ClassCarId), "Id", "FullName", order.DriverId);
+            //ViewBag.DriverId = new SelectList(db.Drivers.Include(u => u.User).Where(d=>d.IsAvailable==true).Where(d=>d.IsBusy==false), "Id", "FullName", order.DriverId);
             ViewBag.OrderStatusId = new SelectList(db.OrderStatuss, "Id", "Name", order.OrderStatusId);
             return View(editOrder);
         }
@@ -114,12 +121,66 @@ namespace AaluxWeb.Controllers
                 .Include(o => o.OrderStatus)
                 .Include(p => p.Payment)
                 .Include(c => c.Client).FirstOrDefaultAsync(o => o.Id == editOrder.Id);
+            
             if (order == null)
             {
                 return HttpNotFound();
             }
             if (ModelState.IsValid)
             {
+                if(editOrder.DriverId == null)
+                {
+                    Driver driver = await db.Drivers.FirstOrDefaultAsync(o => o.Id == order.DriverId);
+                    if (driver != null)
+                    {
+                        driver.IsBusy = false;
+                        db.Entry(driver).State = EntityState.Modified;
+                    }
+                    if(editOrder.OrderStatusId == 2 || editOrder.OrderStatusId == 3)
+                    {
+                        editOrder.OrderStatusId = 1;
+                    }
+                }
+                if (editOrder.DriverId != null)
+                {
+                    switch (editOrder.OrderStatusId)
+                    {
+                        case 1:
+                            {
+                                editOrder.DriverId = null;
+                                Driver driver = await db.Drivers.FirstOrDefaultAsync(o => o.Id == order.DriverId);
+                                if (driver != null)
+                                {
+                                    driver.IsBusy = false;
+                                    db.Entry(driver).State = EntityState.Modified;
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                Driver driver = await db.Drivers.FirstOrDefaultAsync(o => o.Id == editOrder.DriverId);
+                                driver.IsBusy = true;
+                                db.Entry(driver).State = EntityState.Modified;
+                                break;
+                            }
+                        case 3:
+                            {
+                                Driver driver = await db.Drivers.FirstOrDefaultAsync(o => o.Id == editOrder.DriverId);
+                                driver.IsBusy = false;
+                                db.Entry(driver).State = EntityState.Modified;
+                                break;
+                            }
+                        case 4:
+                            {
+                                Driver driver = await db.Drivers.FirstOrDefaultAsync(o => o.Id == editOrder.DriverId);
+                                driver.IsBusy = false;
+                                db.Entry(driver).State = EntityState.Modified;
+                                break;
+                            }
+                    }
+                }
+
+
                 order.DriverId = editOrder.DriverId;
                 order.OrderStatusId = editOrder.OrderStatusId;
                 order.DateEnd = editOrder.DateEnd;
@@ -127,8 +188,6 @@ namespace AaluxWeb.Controllers
                 db.Entry(order).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
-
-
             }
             return View(editOrder);
         }

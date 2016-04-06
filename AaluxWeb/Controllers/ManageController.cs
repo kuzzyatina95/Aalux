@@ -82,7 +82,7 @@ namespace AaluxWeb.Controllers
             {
                 if(driver.Name==null || driver.Surname == null)
                 {
-                    return RedirectToAction("EditDriver", "Manage", new { Id = driver.Id });
+                    return RedirectToAction("EditDriver", "DriverProfile", new { Id = driver.Id });
                 }
             }
             return View(model);
@@ -333,59 +333,7 @@ namespace AaluxWeb.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-        // GET: OrderStatus/Edit/5
-        public async Task<ActionResult> EditDriver(string id)
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Driver driver = await db.Drivers.FindAsync(id);
-            if (driver == null)
-            {
-                return HttpNotFound();
-            }
-            EditDriverViewModel editDriver = new EditDriverViewModel()
-            {
-                Id = driver.Id,
-                Name=driver.Name,
-                Surname=driver.Surname,
-                Email = driver.Email,
-                Birthday = driver.Birthday,
-                IsAvailable = driver.IsAvailable,
-                Phone = driver.Phone
-            }; 
-            return View(editDriver);
-        }
-
-        // POST: OrderStatus/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditDriver([Bind(Include = "Id,Name,Surname,Email,Birthday,IsAvailable,Phone")] EditDriverViewModel editDriver)
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
-            if (editDriver.Id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Driver driver = await db.Drivers.FindAsync(editDriver.Id);
-            if (ModelState.IsValid)
-            {
-                driver.Name = editDriver.Name;
-                driver.Surname = editDriver.Surname;
-                driver.Email = editDriver.Email;
-                driver.Birthday = editDriver.Birthday;
-                driver.IsAvailable = editDriver.IsAvailable;
-                driver.Phone = editDriver.Phone;
-                db.Entry(driver).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(editDriver);
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

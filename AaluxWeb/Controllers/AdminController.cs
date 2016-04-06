@@ -6,10 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Net;
 
 namespace AaluxWeb.Controllers
 {
-    [Authorize(Roles = "TechAdmin, Admin")]
+    [Authorize(Roles = "TechAdmin, Admin, Driver")]
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -27,18 +30,19 @@ namespace AaluxWeb.Controllers
             return View(await orders.ToListAsync());
         }
 
-
+        [Authorize(Roles = "TechAdmin, Admin")]
         public ActionResult AdminNavInfo()
         {
-            var drivers = db.Drivers.Include(d => d.User);
             TabsViewModel all = new TabsViewModel()
             {
-                Drivers = db.Drivers.Include(u => u.User),
+                Drivers = db.Drivers.Include(u => u.User).Where(d=>d.IsAvailable==true),
                 Orders = db.Orders.Where(o=>o.OrderStatusId==1),
                 Licenses = db.Licenses,
                 Users = db.Users.Where(u=>u.IsEnabled==false)
             };
             return PartialView("_AdminNavPartial", all);
         }
+
+       
     }
 }
