@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,7 +19,7 @@ namespace AaluxWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(NewOrderViewModel orderNew)
+        public async Task<ActionResult> Index(NewOrderViewModel orderNew)
         {
             if (orderNew == null)
             {
@@ -54,6 +55,15 @@ namespace AaluxWeb.Controllers
                 }
                 db.Orders.Add(order);
                 db.SaveChanges();
+                
+                var Bot = new Telegram.Bot.Api("182787126:AAHYcghiEy_73Zs6dsqJpQ2JE6YV-IXyGAs");
+                //var offset = 0;
+                //var updates = await Bot.GetUpdates(offset);
+                //foreach (var update in updates)
+                //{
+                //    var t = await Bot.SendTextMessage(update.Message.Chat.Id, "You have a new order");
+                //}
+                var s = await Bot.SendTextMessage("@aalux", "You have a new order");
                 return RedirectToAction("Index");
             }
 

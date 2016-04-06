@@ -185,6 +185,7 @@ namespace AaluxWeb.Models
     public class ClassCar
     {
         public int Id { get; set; }
+        [Display(Name = "Class car")]
         public string Name { get; set; }
         public double Price { get; set; }
     }
@@ -192,9 +193,11 @@ namespace AaluxWeb.Models
     public class Direction
     {
         public int Id { get; set; }
+        [Display(Name = "From")]
         public string AddressOrigin { get; set; }
         public string LatOrigin { get; set; }
         public string LngOrigin { get; set; }
+        [Display(Name = "To")]
         public string AddressDestination { get; set; }
         public string LatDestination { get; set; }
         public string LngDestination { get; set; }
@@ -227,6 +230,7 @@ namespace AaluxWeb.Models
     public class Payment
     {
         public int Id { get; set; }
+        [Display(Name = "Payment")]
         public string Name { get; set; }
     }
 
@@ -252,6 +256,70 @@ namespace AaluxWeb.Models
         public IEnumerable<Order> OrdersCanceled { get; set; }
     }
 
+    public class EditOrderViewModel
+    {
+        [Display(Name = "ID")]
+        public int Id { get; set; }
+
+        [Display(Name = "Client")]
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public Client Client { get; set; }
+
+        [Display(Name = "Direction")]
+        public int DirectionId { get; set; }
+        [ForeignKey("DirectionId")]
+        public Direction Direction { get; set; }
+
+        [Display(Name = "Car class")]
+        public int ClassCarId { get; set; }
+        [ForeignKey("ClassCarId")]
+        public ClassCar ClassCar { get; set; }
+
+        [Display(Name = "Driver")]
+        public string DriverId { get; set; }
+
+        [Display(Name = "Order status")]
+        public int OrderStatusId { get; set; }
+
+        [Display(Name = "Payment")]
+        public int PaymentId { get; set; }
+        [ForeignKey("PaymentId")]
+        public Payment Payment { get; set; }
+
+        [Display(Name = "Post date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DatePost { get; set; }
+
+        [Display(Name = "Post time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime TimePost { get; set; }
+
+        [Display(Name = "Begin date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DateBegin { get; set; }
+
+        [Display(Name = "Begin time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime TimeBegin { get; set; }
+
+        [Display(Name = "End date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DateEnd { get; set; }
+
+        [Display(Name = "End time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:HH-MM}", ApplyFormatInEditMode = true)]
+        public DateTime? TimeEnd { get; set; }
+
+        [Display(Name = "Price")]
+        public double Price { get; set; }
+    }
 
     public class EditDriverViewModel
     {

@@ -138,3 +138,5 @@ C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate8.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate9.resources
 C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\obj\Debug\AaluxWeb.Migrations.migrate10.resources
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\bin\Telegram.Bot.dll
+C:\Users\kuzzy\OneDrive\Документы\Visual Studio 2015\Projects\AaluxWeb\AaluxWeb\bin\Telegram.Bot.xml
