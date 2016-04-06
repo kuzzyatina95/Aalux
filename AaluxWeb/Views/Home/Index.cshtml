@@ -45,7 +45,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+                        <h4 class="modal-title" id="gridSystemModalLabel">Order form</h4>
                     </div>
                         <div class="modal-body">
                             @using (Ajax.BeginForm(new AjaxOptions() { OnSuccess = "OnSuccess", OnFailure = "OnFail", OnComplete = "OnComplete" }))
@@ -69,7 +69,7 @@
                                         <label>{{ClassCar[2].Name}}</label>
                                     </div>
                                     <div class="col-xs-6 col-sm-3">
-                                        <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
+                                        <img src="~/Content/Image/a4.png" alt="" class="img-responsive" />
                                         @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[3].Id", ng_click = "SetClassCar(ClassCar[3])" })
                                         <label>{{ClassCar[3].Name}}</label>
                                     </div>

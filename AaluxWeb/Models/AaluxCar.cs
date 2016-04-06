@@ -9,7 +9,7 @@ namespace AaluxWeb.Models
 {
     public class Order
     {
-        [Display(Name ="ID")]
+        [Display(Name = "ID")]
         public int Id { get; set; }
 
         [Display(Name = "Client")]
@@ -130,7 +130,7 @@ namespace AaluxWeb.Models
             }
         }
 
-       
+
 
         //public ICollection<Car> Cars { get; set; }
         //public ICollection<Order> Orders { get; set; }
@@ -273,6 +273,12 @@ namespace AaluxWeb.Models
         public IEnumerable<Order> OrdersInProgress { get; set; }
         public IEnumerable<Order> OrdersFinished { get; set; }
         public IEnumerable<Order> OrdersCanceled { get; set; }
+    }
+
+    public class DriverOrdersViewModel
+    {
+        public IEnumerable<Order> AllOrders { get; set; }
+        public IEnumerable<Order> CurrentOrders { get; set; }
     }
 
     public class EditOrderViewModel

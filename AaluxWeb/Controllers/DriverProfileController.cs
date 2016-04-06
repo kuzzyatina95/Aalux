@@ -20,12 +20,6 @@ namespace AaluxWeb.Controllers
             return View();
         }
 
-        public ActionResult Orders()
-        {
-            //Order order = db.Orders.Where(o => o.DriverId == UserId);
-            return View();
-        }
-
         public async Task<ActionResult> Car(int? Id)
         {
             Car car = await db.Cars.FirstOrDefaultAsync(u => u.Id == Id);
@@ -192,6 +186,32 @@ namespace AaluxWeb.Controllers
                 return RedirectToAction("Index");
             }
             return View(editDriver);
+        }
+
+        public ActionResult Orders()
+        {
+            string UserId = User.Identity.GetUserId();
+
+            DriverOrdersViewModel driverOrders = new DriverOrdersViewModel()
+            {
+                AllOrders = db.Orders.Where(o => o.DriverId == UserId)
+                .Include(d => d.Driver)
+                .Include(c => c.ClassCar)
+                .Include(d => d.Direction)
+                .Include(o => o.OrderStatus)
+                .Include(p => p.Payment)
+                .Include(c => c.Client),
+
+                CurrentOrders = db.Orders.Where(o => o.DriverId == UserId).Where(o=>o.OrderStatusId==2)
+                .Include(d => d.Driver)
+                .Include(c => c.ClassCar)
+                .Include(d => d.Direction)
+                .Include(o => o.OrderStatus)
+                .Include(p => p.Payment)
+                .Include(c => c.Client)
+            };
+
+            return View(driverOrders);
         }
     }
 }

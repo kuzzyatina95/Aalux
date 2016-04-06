@@ -278,3 +278,12 @@ p.copyright {
     z-index: 1100;
 }
 
+.glyphicon-gbp{
+    font-size: 0.8em;
+}
+.modal.modal-wide .modal-dialog {
+  width: 50%;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}

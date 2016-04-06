@@ -101,7 +101,7 @@ namespace AaluxWeb.Controllers
                 .Include(u => u.Driver)
                 .Where(d => d.Driver.IsAvailable == true)
                 .Where(d => d.Driver.IsBusy == false)
-                .Where(c=>c.ClassCarId==order.ClassCarId), "Id", "FullName", order.DriverId);
+                .Where(c=>c.ClassCarId==order.ClassCarId), "UserId", "FullName", order.DriverId);
             //ViewBag.DriverId = new SelectList(db.Drivers.Include(u => u.User).Where(d=>d.IsAvailable==true).Where(d=>d.IsBusy==false), "Id", "FullName", order.DriverId);
             ViewBag.OrderStatusId = new SelectList(db.OrderStatuss, "Id", "Name", order.OrderStatusId);
             return View(editOrder);
