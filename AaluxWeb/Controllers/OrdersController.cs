@@ -96,13 +96,21 @@ namespace AaluxWeb.Controllers
                 TimePost = order.TimePost,
                 Driver = order.Driver
             };
+            //ViewBag.DriverId = new SelectList(
+            //    db.Cars
+            //    .Include(u => u.Driver)
+            //    .Where(d => d.Driver.IsAvailable == true)
+            //    .Where(d => d.Driver.IsBusy == false)
+            //    .Where(c=>c.ClassCarId==order.ClassCarId), "UserId", "FullName", order.DriverId);
             ViewBag.DriverId = new SelectList(
-                db.Cars
-                .Include(u => u.Driver)
-                .Where(d => d.Driver.IsAvailable == true)
-                .Where(d => d.Driver.IsBusy == false)
-                .Where(c=>c.ClassCarId==order.ClassCarId), "UserId", "FullName", order.DriverId);
-            //ViewBag.DriverId = new SelectList(db.Drivers.Include(u => u.User).Where(d=>d.IsAvailable==true).Where(d=>d.IsBusy==false), "Id", "FullName", order.DriverId);
+                db.Drivers
+                .Include(u => u.User)
+                .Include(c => c.Car)
+                .Where(d => d.IsAvailable == true)
+                .Where(d => d.IsBusy == false)
+                .Where(c=>c.Car.ClassCarId==order.ClassCarId),
+                "Id", "FullName", order.DriverId);
+
             ViewBag.OrderStatusId = new SelectList(db.OrderStatuss, "Id", "Name", order.OrderStatusId);
             return View(editOrder);
         }

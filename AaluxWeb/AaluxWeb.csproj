@@ -234,48 +234,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603021359507_migrate.cs" />
-    <Compile Include="Migrations\201603021359507_migrate.Designer.cs">
-      <DependentUpon>201603021359507_migrate.cs</DependentUpon>
+    <Compile Include="Migrations\201604072048403_migrate.cs" />
+    <Compile Include="Migrations\201604072048403_migrate.Designer.cs">
+      <DependentUpon>201604072048403_migrate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603022026191_migrate2.cs" />
-    <Compile Include="Migrations\201603022026191_migrate2.Designer.cs">
-      <DependentUpon>201603022026191_migrate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603041935382_migrate3.cs" />
-    <Compile Include="Migrations\201603041935382_migrate3.Designer.cs">
-      <DependentUpon>201603041935382_migrate3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603042257315_migrate4.cs" />
-    <Compile Include="Migrations\201603042257315_migrate4.Designer.cs">
-      <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603141556283_migrate5.cs" />
-    <Compile Include="Migrations\201603141556283_migrate5.Designer.cs">
-      <DependentUpon>201603141556283_migrate5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603231324524_migrate6.cs" />
-    <Compile Include="Migrations\201603231324524_migrate6.Designer.cs">
-      <DependentUpon>201603231324524_migrate6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603231348113_migrate7.cs" />
-    <Compile Include="Migrations\201603231348113_migrate7.Designer.cs">
-      <DependentUpon>201603231348113_migrate7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603271722223_migrate8.cs" />
-    <Compile Include="Migrations\201603271722223_migrate8.Designer.cs">
-      <DependentUpon>201603271722223_migrate8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603271749019_migrate9.cs" />
-    <Compile Include="Migrations\201603271749019_migrate9.Designer.cs">
-      <DependentUpon>201603271749019_migrate9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603271831421_migrate10.cs" />
-    <Compile Include="Migrations\201603271831421_migrate10.Designer.cs">
-      <DependentUpon>201603271831421_migrate10.cs</DependentUpon>
+    <Compile Include="Migrations\201604072103010_migrate1.cs" />
+    <Compile Include="Migrations\201604072103010_migrate1.Designer.cs">
+      <DependentUpon>201604072103010_migrate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AaluxCar.cs" />
+    <Compile Include="Models\AaluxCarViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -429,35 +398,11 @@
     <Content Include="Scripts\jquery-2.2.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603021359507_migrate.resx">
-      <DependentUpon>201603021359507_migrate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604072048403_migrate.resx">
+      <DependentUpon>201604072048403_migrate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603022026191_migrate2.resx">
-      <DependentUpon>201603022026191_migrate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603041935382_migrate3.resx">
-      <DependentUpon>201603041935382_migrate3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603042257315_migrate4.resx">
-      <DependentUpon>201603042257315_migrate4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603141556283_migrate5.resx">
-      <DependentUpon>201603141556283_migrate5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603231324524_migrate6.resx">
-      <DependentUpon>201603231324524_migrate6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603231348113_migrate7.resx">
-      <DependentUpon>201603231348113_migrate7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603271722223_migrate8.resx">
-      <DependentUpon>201603271722223_migrate8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603271749019_migrate9.resx">
-      <DependentUpon>201603271749019_migrate9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603271831421_migrate10.resx">
-      <DependentUpon>201603271831421_migrate10.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604072103010_migrate1.resx">
+      <DependentUpon>201604072103010_migrate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

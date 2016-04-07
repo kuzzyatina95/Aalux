@@ -13,7 +13,6 @@ namespace AaluxWeb.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ClassCarId = c.Int(nullable: false),
-                        UserID = c.String(maxLength: 128),
                         Manufacturer = c.String(),
                         Model = c.String(),
                         BodyType = c.String(),
@@ -26,9 +25,7 @@ namespace AaluxWeb.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ClassCars", t => t.ClassCarId, cascadeDelete: true)
-                .ForeignKey("dbo.Drivers", t => t.UserID)
-                .Index(t => t.ClassCarId)
-                .Index(t => t.UserID);
+                .Index(t => t.ClassCarId);
             
             CreateTable(
                 "dbo.ClassCars",
@@ -37,6 +34,32 @@ namespace AaluxWeb.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Price = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Clients",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Surname = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Phone = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Directions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AddressOrigin = c.String(),
+                        LatOrigin = c.String(),
+                        LngOrigin = c.String(),
+                        AddressDestination = c.String(),
+                        LatDestination = c.String(),
+                        LngDestination = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -53,90 +76,20 @@ namespace AaluxWeb.Migrations
                         IsBusy = c.Boolean(nullable: false),
                         IsFired = c.Boolean(nullable: false),
                         Birthday = c.DateTime(nullable: false),
+                        CarId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Cars", t => t.CarId, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "dbo.Orders",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ClientId = c.Int(nullable: false),
-                        DirectionId = c.Int(nullable: false),
-                        ClassCarId = c.Int(nullable: false),
-                        DriverId = c.String(maxLength: 128),
-                        OrderStatusId = c.Int(nullable: false),
-                        PaymentId = c.Int(nullable: false),
-                        DatePost = c.DateTime(nullable: false),
-                        TimePost = c.Time(nullable: false, precision: 7),
-                        DateBegin = c.DateTime(nullable: false),
-                        TimeBegin = c.Time(nullable: false, precision: 7),
-                        DateEnd = c.DateTime(nullable: false),
-                        TimeEnd = c.Time(nullable: false, precision: 7),
-                        Price = c.Double(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ClassCars", t => t.ClassCarId, cascadeDelete: true)
-                .ForeignKey("dbo.Clients", t => t.ClientId, cascadeDelete: true)
-                .ForeignKey("dbo.Directions", t => t.DirectionId, cascadeDelete: true)
-                .ForeignKey("dbo.Drivers", t => t.DriverId)
-                .ForeignKey("dbo.OrderStatus", t => t.OrderStatusId, cascadeDelete: true)
-                .ForeignKey("dbo.Payments", t => t.PaymentId, cascadeDelete: true)
-                .Index(t => t.ClientId)
-                .Index(t => t.DirectionId)
-                .Index(t => t.ClassCarId)
-                .Index(t => t.DriverId)
-                .Index(t => t.OrderStatusId)
-                .Index(t => t.PaymentId);
-            
-            CreateTable(
-                "dbo.Clients",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Surname = c.String(),
-                        Email = c.String(),
-                        Phone = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Directions",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Adress = c.String(),
-                        Lat = c.String(),
-                        Lot = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.OrderStatus",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Payments",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
+                .Index(t => t.Id)
+                .Index(t => t.CarId);
             
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        IsEnabled = c.Boolean(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -195,14 +148,65 @@ namespace AaluxWeb.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        UserID = c.String(maxLength: 128),
+                        Name = c.String(nullable: false),
+                        UserID = c.String(nullable: false, maxLength: 128),
                         DateBegin = c.DateTime(nullable: false),
                         DateEnd = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Drivers", t => t.UserID)
+                .ForeignKey("dbo.Drivers", t => t.UserID, cascadeDelete: true)
                 .Index(t => t.UserID);
+            
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ClientId = c.Int(nullable: false),
+                        DirectionId = c.Int(nullable: false),
+                        ClassCarId = c.Int(nullable: false),
+                        DriverId = c.String(maxLength: 128),
+                        OrderStatusId = c.Int(nullable: false),
+                        PaymentId = c.Int(nullable: false),
+                        DatePost = c.DateTime(nullable: false),
+                        TimePost = c.DateTime(nullable: false),
+                        DateBegin = c.DateTime(nullable: false),
+                        TimeBegin = c.DateTime(nullable: false),
+                        DateEnd = c.DateTime(),
+                        TimeEnd = c.DateTime(),
+                        Price = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ClassCars", t => t.ClassCarId, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.ClientId, cascadeDelete: true)
+                .ForeignKey("dbo.Directions", t => t.DirectionId, cascadeDelete: true)
+                .ForeignKey("dbo.Drivers", t => t.DriverId)
+                .ForeignKey("dbo.OrderStatus", t => t.OrderStatusId, cascadeDelete: true)
+                .ForeignKey("dbo.Payments", t => t.PaymentId, cascadeDelete: true)
+                .Index(t => t.ClientId)
+                .Index(t => t.DirectionId)
+                .Index(t => t.ClassCarId)
+                .Index(t => t.DriverId)
+                .Index(t => t.OrderStatusId)
+                .Index(t => t.PaymentId);
+            
+            CreateTable(
+                "dbo.OrderStatus",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Payments",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -219,47 +223,47 @@ namespace AaluxWeb.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Licenses", "UserID", "dbo.Drivers");
-            DropForeignKey("dbo.Drivers", "Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Orders", "PaymentId", "dbo.Payments");
             DropForeignKey("dbo.Orders", "OrderStatusId", "dbo.OrderStatus");
             DropForeignKey("dbo.Orders", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.Orders", "DirectionId", "dbo.Directions");
             DropForeignKey("dbo.Orders", "ClientId", "dbo.Clients");
             DropForeignKey("dbo.Orders", "ClassCarId", "dbo.ClassCars");
-            DropForeignKey("dbo.Cars", "UserID", "dbo.Drivers");
+            DropForeignKey("dbo.Licenses", "UserID", "dbo.Drivers");
+            DropForeignKey("dbo.Drivers", "Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Drivers", "CarId", "dbo.Cars");
             DropForeignKey("dbo.Cars", "ClassCarId", "dbo.ClassCars");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Licenses", new[] { "UserID" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Orders", new[] { "PaymentId" });
             DropIndex("dbo.Orders", new[] { "OrderStatusId" });
             DropIndex("dbo.Orders", new[] { "DriverId" });
             DropIndex("dbo.Orders", new[] { "ClassCarId" });
             DropIndex("dbo.Orders", new[] { "DirectionId" });
             DropIndex("dbo.Orders", new[] { "ClientId" });
+            DropIndex("dbo.Licenses", new[] { "UserID" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Drivers", new[] { "CarId" });
             DropIndex("dbo.Drivers", new[] { "Id" });
-            DropIndex("dbo.Cars", new[] { "UserID" });
             DropIndex("dbo.Cars", new[] { "ClassCarId" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Payments");
+            DropTable("dbo.OrderStatus");
+            DropTable("dbo.Orders");
             DropTable("dbo.Licenses");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Payments");
-            DropTable("dbo.OrderStatus");
+            DropTable("dbo.Drivers");
             DropTable("dbo.Directions");
             DropTable("dbo.Clients");
-            DropTable("dbo.Orders");
-            DropTable("dbo.Drivers");
             DropTable("dbo.ClassCars");
             DropTable("dbo.Cars");
         }

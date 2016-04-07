@@ -7,13 +7,13 @@ namespace AaluxWeb.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class migrate3 : IMigrationMetadata
+    public sealed partial class migrate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migrate3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migrate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603041935382_migrate3"; }
+            get { return "201604072048403_migrate"; }
         }
         
         string IMigrationMetadata.Source

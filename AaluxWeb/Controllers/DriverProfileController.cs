@@ -23,6 +23,7 @@ namespace AaluxWeb.Controllers
         public async Task<ActionResult> Car(int? Id)
         {
             Car car = await db.Cars.FirstOrDefaultAsync(u => u.Id == Id);
+
             
             if (car == null)
             {
@@ -37,12 +38,10 @@ namespace AaluxWeb.Controllers
                 ClassCar = car.ClassCar,
                 ClassCarId = car.ClassCarId,
                 Color = car.Color,
-                Driver = car.Driver,
                 ImageLink = car.ImageLink,
                 Manufacturer = car.Manufacturer,
                 Model = car.Model,
                 ShortCharacter = car.ShortCharacter,
-                UserID = car.UserID,
                 YearOfRelease = car.YearOfRelease
             };
             ViewBag.ClassCarId = new SelectList(db.ClassCars, "Id", "Name", car.ClassCarId);
@@ -53,7 +52,9 @@ namespace AaluxWeb.Controllers
         public async Task<ActionResult> Car(CarViewModel carVM)
         {
             Car car1 = await db.Cars.FirstOrDefaultAsync(u => u.Id == carVM.Id);
+
             string UserId = User.Identity.GetUserId();
+            Driver Driver = await db.Drivers.FirstOrDefaultAsync(u => u.Id == UserId);
             if (car1 == null)
             {
                 if (ModelState.IsValid)
@@ -66,13 +67,12 @@ namespace AaluxWeb.Controllers
                         Color = carVM.Color,
                         ImageLink = carVM.ImageLink,
                         Manufacturer = carVM.Manufacturer,
-                        UserID = UserId,
                         Model = carVM.Model,
                         ShortCharacter = carVM.ShortCharacter,
                         YearOfRelease = carVM.YearOfRelease
                     };
-
-                    db.Cars.Add(car);
+                    Driver.Car = car;
+                    db.Entry(Driver).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -87,7 +87,6 @@ namespace AaluxWeb.Controllers
                 car1.Color = carVM.Color;
                 car1.ImageLink = carVM.ImageLink;
                 car1.Manufacturer = carVM.Manufacturer;
-                car1.UserID = UserId;
                 car1.Model = carVM.Model;
                 car1.ShortCharacter = carVM.ShortCharacter;
                 car1.YearOfRelease = carVM.YearOfRelease;
@@ -107,26 +106,12 @@ namespace AaluxWeb.Controllers
         {
                  
             string UserId = User.Identity.GetUserId();
-            Driver dr = db.Drivers.Include(d => d.User).FirstOrDefault(d => d.Id == UserId);
-            Driver driver = db.Drivers.Include(d => d.User).FirstOrDefault(d => d.Id == UserId);
-
-           
             NavDriverViewModel navDriver = new NavDriverViewModel();
-            Car car = db.Cars.FirstOrDefault(d => d.UserID == UserId);
-            if(car == null)
-            {
-                navDriver.Driver = driver;
-                navDriver.DriverId = driver.Id;
-                navDriver.Orders = db.Orders.Where(o => o.DriverId == UserId);
-            }
-            else
-            {
-                navDriver.Driver = driver;
-                navDriver.Car = car;
-                navDriver.CarId = car.Id;
-                navDriver.DriverId = driver.Id;
-                navDriver.Orders = db.Orders.Where(o => o.DriverId == UserId);
-            }
+
+            navDriver.Driver = db.Drivers.Include(d => d.User).Include(c=>c.Car).FirstOrDefault(d => d.Id == UserId);
+            navDriver.Orders = db.Orders.Where(o => o.DriverId == UserId);
+
+
             return PartialView("_DriverNavPartial", navDriver);
         }
 

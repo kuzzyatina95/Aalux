@@ -84,14 +84,24 @@
                     @Html.DisplayFor(model => model.Birthday)
                 </dd>
                 <dd>
-                    @ViewBag.Manufacturer
+                    @Html.DisplayNameFor(model => model.Car.Manufacturer)
                 </dd>
                 <dd>
-                    @ViewBag.Model
+                    @Html.DisplayFor(model => model.Car.Manufacturer)
                 </dd>
                 <dd>
-                    @ViewBag.ClassCarName
+                    @Html.DisplayNameFor(model => model.Car.Model)
                 </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Car.Model)
+                </dd>
+                <dd>
+                    @Html.DisplayNameFor(model => model.Car.ClassCar.Name)
+                </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Car.ClassCar.Name)
+                </dd>
+
 
             </dl>
         </div>

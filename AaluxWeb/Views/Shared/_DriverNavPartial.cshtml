@@ -16,8 +16,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="driver-panel">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Edit my profile", "EditDriver", new { id = Model.DriverId })</li>
-                <li>@Html.ActionLink("My car", "Car", new { id = Model.CarId })</li>
+                <li>@Html.ActionLink("Edit my profile", "EditDriver", new { id = Model.Driver.Id })</li>
+                <li>@Html.ActionLink("My car", "Car", new { id = Model.Driver.CarId })</li>
                 @*<li>
                     <a href="@Url.Action("Index", "Users")">
                         Users
