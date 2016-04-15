@@ -14,9 +14,9 @@ myApp.controller('orderCtrl', function (NgMap, $scope, $http) {
     $('#myModal').on('shown.bs.modal', function () {
         $scope.reRednerMap();
     });
-    $('#payForm').validate({
-        ignore: "#payForm *"
-    });
+
+   
+
 
     $http.get('/Home/IndexCreateOrder').success(function (data) {
         $scope.ClassCar = data;

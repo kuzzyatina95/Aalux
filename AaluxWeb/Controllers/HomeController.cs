@@ -19,12 +19,14 @@ namespace AaluxWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(NewOrderViewModel orderNew)
         {
             if (orderNew == null)
             {
                 return RedirectToAction("Index");
             }
+     
             if (ModelState.IsValid)
             {
                 Order order = new Order()
@@ -54,17 +56,13 @@ namespace AaluxWeb.Controllers
                     order.Client = client;
                 }
                 db.Orders.Add(order);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 
                 var Bot = new Telegram.Bot.Api("182787126:AAHYcghiEy_73Zs6dsqJpQ2JE6YV-IXyGAs");
-                //var offset = 0;
-                //var updates = await Bot.GetUpdates(offset);
-                //foreach (var update in updates)
-                //{
-                //    var t = await Bot.SendTextMessage(update.Message.Chat.Id, "You have a new order");
-                //}
+
                 var s = await Bot.SendTextMessage("@aalux", "You have a new order");
                 return RedirectToAction("Index");
+               
             }
 
             return View(orderNew);

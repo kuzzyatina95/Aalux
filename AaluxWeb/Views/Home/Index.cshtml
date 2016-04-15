@@ -40,6 +40,7 @@
             Booking now
         </button>
 
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -47,58 +48,59 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="gridSystemModalLabel">Order form</h4>
                     </div>
-                        <div class="modal-body">
-                            @using (Ajax.BeginForm(new AjaxOptions() { OnSuccess = "OnSuccess", OnFailure = "OnFail", OnComplete = "OnComplete" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-3">
-                                        <img src="~/Content/Image/a1.png" alt="" class="img-responsive" for="ClassCarId" />
-                                        @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[1].Id", ng_click = "SetClassCar(ClassCar[1])" })
-                                        <label>{{ClassCar[1].Name}}</label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3">
-                                        <img src="~/Content/Image/a2.png" alt="" class="img-responsive" />
-                                        @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[0].Id", ng_click = "SetClassCar(ClassCar[0])" })
-                                        <label>{{ClassCar[0].Name}}</label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3">
-                                        <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
-                                        @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[2].Id", ng_click = "SetClassCar(ClassCar[2])" })
-                                        <label>{{ClassCar[2].Name}}</label>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-3">
-                                        <img src="~/Content/Image/a4.png" alt="" class="img-responsive" />
-                                        @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[3].Id", ng_click = "SetClassCar(ClassCar[3])" })
-                                        <label>{{ClassCar[3].Name}}</label>
-                                    </div>
-                                    <div class="col-xs-12">@Html.ValidationMessageFor(model => model.ClassCarId, "", new { @class = "text-danger" })</div>
+                      
+                    <div class="modal-body">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "orderForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-3">
+                                    <img src="~/Content/Image/a1.png" alt="" class="img-responsive" for="ClassCarId" />
+                                    @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[1].Id", ng_click = "SetClassCar(ClassCar[1])" })
+                                    <label>{{ClassCar[1].Name}}</label>
                                 </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <img src="~/Content/Image/a2.png" alt="" class="img-responsive" />
+                                    @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[0].Id", ng_click = "SetClassCar(ClassCar[0])" })
+                                    <label>{{ClassCar[0].Name}}</label>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <img src="~/Content/Image/a3.png" alt="" class="img-responsive" />
+                                    @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[2].Id", ng_click = "SetClassCar(ClassCar[2])" })
+                                    <label>{{ClassCar[2].Name}}</label>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <img src="~/Content/Image/a4.png" alt="" class="img-responsive" />
+                                    @Html.RadioButtonFor(model => model.ClassCarId, "", new { ng_value = "ClassCar[3].Id", ng_click = "SetClassCar(ClassCar[3])" })
+                                    <label>{{ClassCar[3].Name}}</label>
+                                </div>
+                                <div class="col-xs-12">@Html.ValidationMessageFor(model => model.ClassCarId, "", new { @class = "text-danger" })</div>
+                            </div>
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
                                         @Html.LabelFor(model => model.Direction.AddressOrigin)
                                         @Html.TextBoxFor(model => model.Direction.AddressOrigin, new
-                               {
-                                   @class = "form-control",
-                                   ng_model = "vm.origin",
-                                   places_auto_complete = "places_auto_complet",
-                                   size = 80,
-                                   on_place_changed = "vm.placeChangedOrigin()"
-                               })
+                                   {
+                                       @class = "form-control",
+                                       ng_model = "vm.origin",
+                                       places_auto_complete = "places_auto_complet",
+                                       size = 80,
+                                       on_place_changed = "vm.placeChangedOrigin()"
+                                   })
                                         @Html.ValidationMessageFor(model => model.Direction.AddressOrigin, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-xs-12 col-sm-6">
                                         @Html.LabelFor(model => model.Direction.AddressDestination)
                                         @Html.TextBoxFor(model => model.Direction.AddressDestination, new
-                               {
-                                   @class = "form-control",
-                                   ng_model = "vm.destination",
-                                   places_auto_complete = "places_auto_complet",
-                                   size = 80,
-                                   on_place_changed = "vm.placeChangedDestination()"
-                               })
+                                   {
+                                       @class = "form-control",
+                                       ng_model = "vm.destination",
+                                       places_auto_complete = "places_auto_complet",
+                                       size = 80,
+                                       on_place_changed = "vm.placeChangedDestination()"
+                                   })
                                         @Html.ValidationMessageFor(model => model.Direction.AddressDestination, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -113,7 +115,7 @@
                                             </directions>
                                         </ng-map>
                                         @*<p>{{map.directionsRenderers[0].directions.routes[0].legs[0].distance.text}}</p>
-                    <p>{{((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10 | number:1}}</p>*@
+                            <p>{{((map.directionsRenderers[0].directions.routes[0].legs[0].distance.value * 0.000621371192) * 10) / 10 | number:1}}</p>*@
                                     </div>
 
 
@@ -173,33 +175,34 @@
                                         <label>Credit card</label>
                                     </div>
                                     <div class="col-xs-6">
-                                        @Html.RadioButtonFor(model => model.PaymentId, 2)
+                                        @Html.RadioButtonFor(model => model.PaymentId, 2, new { Checked = "checked" })
                                         <label>Cash</label>
                                     </div>
                                     @Html.ValidationMessageFor(model => model.PaymentId, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <input type="submit" value="Book now" class="btn btn-primary" />
+                                    <button type="button" class="btn btn-default"  data-dismiss="modal">Cancel</button>
+                                    <input type="submit" id="buttonPost" value="Book now" class="btn btn-primary" />
                                 </div>
-                            }
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <form id="payForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top: -50px;">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="NEVVCWEY7TQDJ">
-                                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."  class="img-responsive">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </div>
+                        }
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <form id="payForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top: -50px;">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="NEVVCWEY7TQDJ">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." class="img-responsive">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                                </form>
                             </div>
-                            @*<tt>Order = {{order | json}}</tt><br />*@
-
                         </div>
-                        @*<div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <input type="submit" value="Book now" class="btn btn-primary" />
-                        </div>*@
+                        @*<tt>Order = {{order | json}}</tt><br />*@
+
+                    </div>
+
+             
+
+
+
 
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -224,13 +227,15 @@
 <div id="bg2">
     <div class="container">
         <div class="row">
+            <img src="~/Content/Image/bg_title_1.png" alt="Alternate Text" class="img-responsive" id="bg2_title" /> 
             <div class="col-sm-12">
+               
                 <h1 class="text-center">TOUR SERVICES</h1>
             </div>
         </div>
 
-        <div class="row row-centered">
-            <div class="col-sm-9 col-centered">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
                 <div class="media">
                     <div class="pull-left">
                         <img class="media-object" src="~/Content/Image/ic.png" alt="...">
@@ -241,8 +246,8 @@
                 </div>
             </div>
         </div>
-        <div class="row row-centered">
-            <div class="col-sm-9 col-centered">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
                 <div class="media">
                     <div class="pull-left">
                         <img class="media-object" src="~/Content/Image/ic.png" alt="...">
@@ -253,8 +258,8 @@
                 </div>
             </div>
         </div>
-        <div class="row row-centered">
-            <div class="col-sm-9 col-centered">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
                 <div class="media">
                     <div class="pull-left">
                         <img class="media-object" src="~/Content/Image/ic.png" alt="...">
@@ -265,8 +270,8 @@
                 </div>
             </div>
         </div>
-        <div class="row row-centered">
-            <div class="col-sm-9 col-centered">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
                 <div class="media">
                     <div class="pull-left">
                         <img class="media-object" src="~/Content/Image/ic.png" alt="...">
@@ -277,8 +282,8 @@
                 </div>
             </div>
         </div>
-        <div class="row row-centered">
-            <div class="col-sm-9 col-centered">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2">
                 <div class="media">
                     <div class="pull-left">
                         <img class="media-object" src="~/Content/Image/ic.png" alt="...">
@@ -289,15 +294,101 @@
                 </div>
             </div>
         </div>
+
+      
     </div>
 </div>
 <!--/.END BG2 -->
 <!--/.START BG3 -->
 <div id="bg3">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6">
+                <img src="~/Content/Image/bg_title_2.png" alt="Alternate Text" class="img-responsive" id="bg3_title" />
+            </div>
 
+            <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6">
+                <h1 class="text-center">OUR DRIVERS</h1>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6">
+                <h2 class="text-center">
+                    WE ONLY
+                    EMPLOY PROFESSIONALS WITH AN IMPECCABLE
+                    REPUTATION.
+                </h2>
+            </div>
         </div>
+        <div class="list">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6">
+                    <h2 class="text-center">
+                        OUR DRIVERS ARE:
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6 col-lg-5 col-lg-offset-7">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="~/Content/Image/ic1.png" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h3>impeccably polite and considerate</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6 col-lg-5 col-lg-offset-7">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="~/Content/Image/ic2.png" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h3>highly qualified</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6 col-lg-5 col-lg-offset-7">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="~/Content/Image/ic3.png" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h3>have a license and liability insurancer</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6 col-lg-5 col-lg-offset-7">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="~/Content/Image/ic4.png" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h3>have at least 5 years of experience</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-6 col-lg-5 col-lg-offset-7">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="~/Content/Image/ic5.png" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h3>strictly adhere to confidentiality rules</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
     </div>
 </div>
 <!--/.END BG3 -->
@@ -326,15 +417,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
 <script type="text/javascript">
     function OnSuccess() {
-        alert("success");
+        //alert("OnSuccess");
+        
     }
+
     function OnFail() {
         alert("fail");
     }
     function OnComplete() {
-        alert("Complete");
+        //alert("OnComplete");
     }
+    $('#buttonPost').on('click', function () {
+        if ($("#orderForm").valid()) {
+            var $btn = $(this).button('loading')
+        }
+    });
+    
 
 </script>

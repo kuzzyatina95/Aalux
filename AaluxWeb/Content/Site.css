@@ -55,6 +55,10 @@ a:after {
   color: #ddd;
 }
 
+.navbar{
+    margin: 0 auto;
+}
+
 a.navbar-brand {
 	color: #fff !important;
 	font-weight: 900;
@@ -66,39 +70,35 @@ a.navbar-brand:hover {
 
 /* Header */
 
-.nopadding {
- padding: 0 !important;
- margin: 0 !important;
-}
+
 
 #bg1 {	
 	background-color: #444;
 	background: url(Image/bg1.jpg) no-repeat center top;
-	padding-top: 20px;
+	padding-top: 30px;
 	background-attachment: relative;
 	background-position: center center;
-	min-height: 650px;
+	min-height: 800px;
 	width: 100%;
-	
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
+	min-height: 850px;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    -webkit-background-size: cover;
+     -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #bg2 {  
   background-color: #444;
   background: url(Image/bg2.jpg) no-repeat center top;
-  margin-top: -20px;
-  padding-top: 20px;
+  padding: 20px 0px 20px 0px;
   background-attachment: relative;
   background-position: center center;
-  min-height: 650px;
+  min-height: 850px;
   width: 100%;
   
   -webkit-background-size: 100%;
@@ -115,11 +115,10 @@ a.navbar-brand:hover {
 #bg3 {  
   background-color: #444;
   background: url(Image/bg3.jpg) no-repeat center top;
-  margin-top: -20px;
-  padding-top: 20px;
+  padding: 20px 0px 50px 0px;
   background-attachment: relative;
   background-position: center center;
-  min-height: 650px;
+  min-height: 850px;
   width: 100%;
   
   -webkit-background-size: 100%;
@@ -136,11 +135,10 @@ a.navbar-brand:hover {
 #bg4 {  
   background-color: #444;
   background: url(Image/bg4.jpg) no-repeat center top;
-  margin-top: -20px;
   padding-top: 20px;
   background-attachment: relative;
   background-position: center center;
-  min-height: 650px;
+  min-height: 850px;
   width: 100%;
   
   -webkit-background-size: 100%;
@@ -157,11 +155,10 @@ a.navbar-brand:hover {
 #bg5 {  
   background-color: #444;
   background: url(Image/bg5.jpg) no-repeat center top;
-  margin-top: -20px;
   padding-top: 20px;
   background-attachment: relative;
   background-position: center center;
-  min-height: 650px;
+  min-height: 850px;
   width: 100%;
   
   -webkit-background-size: 100%;
@@ -185,40 +182,64 @@ a.navbar-brand:hover {
 }
 
 #bg2 h1{
-  margin-bottom: 15px;
-  color: #fff;
-  font-size: 45px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  text-shadow: 2px 2px black;
-  padding: 0px 0px 30px 0px;
+    margin-bottom: 15px;
+    margin-top: -115px;
+    color: #fff;
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px black;
+    padding: 0px 0px 30px 0px;
 }
 
 #bg2 h2{
-    margin-top: 0px;
+    font-size: 25px;
+}
+
+#bg2_title{
+    margin: 0 auto;
+    height: 155px;
+}
+
+#bg3_title{
+    margin: 0 auto;
+    height: 155px;
+}
+
+#bg2 h2{
+    margin-top: 10px;
     color: white;
 }
 
-#bg_title_2{
-  background-color: #444;
-  background: url(../img/bg_title_2.png) no-repeat center top;
-  margin-top: -20px;
-  padding-top: 20px;
-  background-attachment: relative;
-  background-position: center center;
-  min-height: 650px;
-  width: 100%;
-  
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
-
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.media-object{
+    margin-top: 15px;
 }
+
+#bg3 h1{
+    margin-top: -115px;
+    margin-bottom: 15px;
+    color: #967849;
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    padding: 0px 0px 30px 0px;
+    text-shadow: 2px 2px 20px #FFFFFF;
+}
+
+#bg3 h2{
+    text-shadow: 2px 2px 20px #000000;
+    color: white;
+}
+
+#bg3 h3{
+    text-shadow: 2px 2px 20px #fff;
+    color: black;
+    font-size: 30px;
+}
+
+
+
+
 
 h2.subtitle {
 	color: #fff;
@@ -238,39 +259,12 @@ p.copyright {
 }	
 
 #panel{
-  margin-top: 220px;
-  margin-bottom: 20px;
+    margin: 410px 0px 0px 0px;
 }
 
 .dark-panel{
-  background-color: rgba(0, 0, 0, 0.5);
-  color:white;
-}
-
-/* centered columns styles */
-.row-centered {
-    text-align:center;
-}
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
-}
-
-.col-fixed {
-    /* custom width */
-    width:320px;
-}
-.col-min {
-    /* custom min width */
-    min-width:320px;
-}
-.col-max {
-    /* custom max width */
-    max-width:320px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
 }
 
 
@@ -281,9 +275,8 @@ p.copyright {
 .glyphicon-gbp{
     font-size: 0.8em;
 }
-.modal.modal-wide .modal-dialog {
-  width: 50%;
+
+.list{
+    margin: 50px 0px 50px 0px;
 }
-.modal-wide .modal-body {
-  overflow-y: auto;
-}
+
